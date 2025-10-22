@@ -1,0 +1,11 @@
+Sample Index: 12
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a queen, [character1], young and regal, with an elaborate braided hairstyle and wearing a deep velvet gown. The environment is a grand, empty throne room at night, lit by moonlight streaming through a tall arched window. This scene contains 5 shots. [per shot caption] Medium shot of [character1] slowly walking towards her large, ornate throne. [shot cut] Close-up of the heavy crown sitting on the throne's velvet cushion. [shot cut] Medium close-up of [character1]'s face as she looks at the crown, her expression a mixture of duty and apprehension. [shot cut] Close-up of her hands as she slowly reaches out and picks up the crown. [shot cut] Medium shot as she stands before the throne, holding the crown, the weight of her kingdom in her hands.
+
+Shot Cut Frames:
+--------------------------------------------------
+[57, 101, 157, 213]

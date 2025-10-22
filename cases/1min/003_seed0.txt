@@ -1,0 +1,11 @@
+Sample Index: 3
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a single character, [character1], a young painter with paint-splattered clothes and curly brown hair tied back in a bun. She is in her art studio, a bright, airy loft with large windows, canvases, and pots of brushes. The afternoon sun streams in, illuminating dust motes in the air. This scene contains 6 shots. [per shot caption] Medium shot of [character1] standing back from a large canvas, her head tilted as she studies her work. [shot cut] Close-up of her face, a mix of frustration and concentration in her expression. [shot cut] Medium shot as she walks to a small table, picks up a palette and a brush. [shot cut] Close-up of the palette as she mixes a vibrant shade of blue with deliberate strokes. [shot cut] Medium shot of her returning to the canvas and applying a single, careful brushstroke. [shot cut] Close-up of [character1]'s face as her expression softens into a small, satisfied smile.
+
+Shot Cut Frames:
+--------------------------------------------------
+[161, 321, 481, 641, 801]

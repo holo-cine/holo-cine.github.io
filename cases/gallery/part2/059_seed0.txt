@@ -1,0 +1,11 @@
+Sample Index: 59
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] A tailor, [character1], an old man with meticulous hands and glasses perched on his nose, works in his shop. The shop is filled with bolts of fabric, mannequins, and sewing machines. This scene contains 5 shots. [per shot caption] Medium shot of [character1] at a cutting table, carefully drawing a chalk line on a piece of fine wool fabric. [shot cut] Close-up of his steady hand guiding the chalk along a ruler. [shot cut] Medium close-up of his face, focused in concentration, looking down at his work. [shot cut] Close-up of a needle and thread as he makes a slow, precise stitch by hand. [shot cut] Medium shot as he holds up the finished suit jacket on a hanger, inspecting it with a proud, critical eye.
+
+Shot Cut Frames:
+--------------------------------------------------
+[57, 101, 157, 213]

@@ -1,0 +1,12 @@
+
+Sample Index: 38
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] [character1] is a woman with dark hair, wearing an elaborate dark historical gown and a headpiece. [character2] is a man with dark hair, wearing a black cap and a fur-collared robe. They are in a richly decorated, historical room with patterned walls and large windows. (10 shots) [per shot caption] Wide shot showing [character1] and [character2] seated across from each other in an ornate room, [character1] looking towards [character2]. [shot cut] Close-up of [character1]'s face as she looks upwards and clasps her hands, a pained expression. [shot cut] Medium shot of [character1] looking upwards, then meeting [character2]'s gaze with a slight, knowing smile. [shot cut] Medium shot of [character2] listening intently, hands clasped, an unreadable expression. [shot cut] Medium shot of [character1] speaking, her initial smile fading to a more serious look. [shot cut] Medium shot of [character2] listening, his expression grim and thoughtful. [shot cut] Close-up of [character1] speaking with intensity and a serious demeanor. [shot cut] Close-up of [character2] listening carefully, his eyes focused. [shot cut] Close-up of [character1] speaking directly to [character2], her expression resolute. [shot cut] Close-up of [character2] observing [character1], his face revealing a deep contemplation.
+
+Shot Cut Frames:
+--------------------------------------------------
+[113, 225, 313, 361, 413, 557, 637, 677, 917]

@@ -1,0 +1,11 @@
+Sample Index: 5
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two main characters: [character1] is a cyberpunk hacker with neon-colored cybernetic implants on her temple and a rebellious undercut hairstyle, wearing a worn jacket; [character2] is a stoic corporate enforcer in a sleek, black armored suit, his face mostly obscured by a helmet. The environment is a rain-slicked, neon-drenched alley in a futuristic city. This scene contains 6 shots. [per shot caption] Medium shot of [character1] cornered against a wall, rain dripping from her hair, her expression a mix of fear and defiance. [shot cut] Close-up of [character2]'s imposing figure advancing slowly, his heavy boots splashing in puddles. [shot cut] Medium close-up of [character1]'s face as she glares, a small data chip held tightly in her fist. [shot cut] Close-up of [character2]'s gloved hand extending, demanding the chip without a word. [shot cut] Extreme close-up of [character1]'s eyes, a quick decision being made. [shot cut] Close-up on [character1]'s forearm as she presses the chip into a hidden data port. Her cybernetics glow intensely, then the chip emits a puff of smoke, completely fried. She looks up at [character2], smirking through the pain.
+
+Shot Cut Frames:
+--------------------------------------------------
+[41, 81, 117, 157, 201]

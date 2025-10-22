@@ -1,0 +1,11 @@
+Sample Index: 0
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two main characters in a neo-noir, rain-slicked cyberpunk city at night. [character1] is a grizzled detective with a cybernetic eye, wearing a worn trench coat. [character2] is a mysterious informant with neon-streaked hair and glowing tattoos on her neck, wearing a sleek, dark jumpsuit. The environment is a dimly lit alley, illuminated by flickering holographic ads and the constant drizzle reflecting off the pavement. This scene contains 5 shots. [per shot caption] Medium shot of [character1] leaning against a graffiti-covered wall, his face half in shadow, looking weary as rain drips from his hat. [shot cut] Medium close-up shot of [character2]'s face, her expression unreadable, as the neon light from a nearby sign casts a blue glow on her skin. [shot cut] Over-the-shoulder shot from behind [character1], showing [character2] speaking, her lips moving silently. [shot cut] Extreme close-up on [character1]'s cybernetic eye, which glows red as it analyzes [character2]. [shot cut] Medium shot of [character2] turning and walking away, disappearing into the misty, neon-lit alley.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 97, 145, 193]

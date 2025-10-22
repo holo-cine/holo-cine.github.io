@@ -1,0 +1,11 @@
+Sample Index: 5
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene is set inside a derelict spaceship bridge, with sparking consoles and a view of a swirling nebula through the main viewport. The sole character is [character1], a female astronaut with tired eyes and short-cropped hair, wearing a worn-out spacesuit without the helmet. This scene contains 7 shots. [per shot caption] Medium shot of [character1] sitting in the captain's chair, gazing at the nebula. [shot cut] Close-up of a blinking red light on a console, reflecting on her face. [shot cut] Medium shot as she slowly turns to the console, her expression weary. [shot cut] Close-up of her hand reaching out and flipping a switch. The red light stops blinking. [shot cut] A moment of silence, then a low hum starts to fill the bridge and some panels light up with a steady green glow. [shot cut] Medium shot of [character1]'s face as a flicker of hope appears in her eyes. [shot cut] Wide shot of the bridge, now partially illuminated, with [character1] looking out at the vast, beautiful nebula.
+
+Shot Cut Frames:
+--------------------------------------------------
+[137, 273, 413, 549, 685, 821]

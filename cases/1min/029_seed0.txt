@@ -1,0 +1,11 @@
+Sample Index: 29
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two main characters: [character1] is a young, determined explorer with tanned skin and a practical ponytail, wearing rugged outdoor gear; [character2] is a wise-looking old tribal leader with deep wrinkles and a feathered headdress. The environments include a dense, fog-shrouded jungle ruin with ancient stone carvings and a warm, glowing campfire under a starry sky. This scene contains 13 shots. [per shot caption] Close-up of [character1]'s compass spinning wildly, a look of confusion. [shot cut] Medium shot of [character1] pushing through thick vines in the jungle ruin. [shot cut] Close-up of an intricate carving on a stone wall. [shot cut] Medium close-up of [character2] watching [character1] from the shadows, a knowing expression. [shot cut] Close-up of [character1] wiping sweat from her brow, determined. [shot cut] Split focus medium shot of [character1] discovering a hidden path on the left and [character2] nodding slightly in approval on the right. [shot cut] Close-up of a feather from [character2]'s headdress dropping to the ground. [shot cut] Medium close-up of [character1] finding the feather and looking around cautiously. [shot cut] Medium shot of [character2] now standing by the campfire, beckoning [character1]. [shot cut] Close-up of [character1]'s expression of awe and relief. [shot cut] Split focus close-up of [character1] looking grateful and [character2] looking patient. [shot cut] Medium shot of the two sitting by the fire, sharing a drink. [shot cut] Close-up on the flickering campfire light.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 113, 177, 257, 325, 405, 477, 561, 645, 729, 817, 897]

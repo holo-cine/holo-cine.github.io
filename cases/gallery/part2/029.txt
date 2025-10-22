@@ -1,0 +1,11 @@
+Sample Index: 29
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a lighthouse keeper, [character1], a rugged man with a thick beard and a warm sweater, performing his duties. The environment is the top of a lighthouse, with the giant, rotating lamp and a view of a stormy sea outside. This scene contains 5 shots. [per shot caption] Medium shot of [character1] polishing the huge glass lens of the lighthouse lamp. [shot cut] Close-up of his weathered hand wiping the glass, revealing the stormy ocean waves crashing outside. [shot cut] Medium close-up of his calm, steady face, focused on his task, the rotating light casting moving shadows. [shot cut] Wide shot from outside the lighthouse, showing its powerful beam of light cutting through the dark, stormy night. [shot cut] Medium shot of [character1] looking out the window at the tempestuous sea, a quiet guardian against the storm.
+
+Shot Cut Frames:
+--------------------------------------------------
+[57, 101, 157, 213]

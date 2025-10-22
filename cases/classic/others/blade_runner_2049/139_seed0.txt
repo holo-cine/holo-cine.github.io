@@ -1,0 +1,11 @@
+Sample Index: 139
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] A lonely man encounters a giant holographic woman in a futuristic city. The scene features two main characters: [character1] is a weary man with a bandaged nose, wearing a dark coat; [character2] is a giant, translucent, holographic woman with a vibrant blue bob haircut. The environment is a dark, rainy, neon-lit cyberpunk cityscape at night, with a color palette of purple, blue, and magenta. This scene contains 5 shots. [per shot caption] Medium close-up of [character1] looking up with a lonely and stoic expression, his face illuminated by purple neon light. [shot cut] A wide shot showing the towering, semi-transparent form of [character2] looking down with a gentle expression at the small, distant figure of [character1] on a walkway. [shot cut] Return to the medium close-up of [character1], holding his gaze upwards, seemingly lost in thought. [shot cut] An over-the-shoulder shot from behind [character1]'s silhouette, focusing on the massive, caring face of the holographic [character2] as she communicates with him. [shot cut] Final medium close-up on [character1] as he breaks his gaze and looks down slightly, his expression remaining somber.
+
+Shot Cut Frames:
+--------------------------------------------------
+[21, 69, 133, 189]

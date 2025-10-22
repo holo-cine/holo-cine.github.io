@@ -1,0 +1,11 @@
+Sample Index: 7
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] A science fiction scene on a visually stunning, undiscovered alien planet. [character1] is a lone astronaut in a sleek, white-and-orange spacesuit, their face visible through a clear helmet, showing a sense of wonder. The environment is a forest of glowing, crystalline trees under a purple sky with two suns. The air is filled with sparkling, floating spores. This scene contains 5 shots. [per shot caption] Wide shot of [character1] walking cautiously through the glowing crystal forest, their boots making soft crunching sounds on the crystalline ground. [shot cut] Medium shot as [character1] stops and kneels, reaching out a gloved hand towards a pulsating, bioluminescent plant on the ground. [shot cut] Close-up on [character1]'s face inside the helmet, their eyes wide with awe and fascination. [shot cut] A shot from [character1]'s point of view, showing their gloved fingers gently touching the plant, causing it to emit a soft, harmonious chime and a brighter pulse of light. [shot cut] A final wide shot showing the light from the touched plant spreading in a chain reaction, causing the entire crystal forest to light up brilliantly around the lone astronaut.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 97, 145, 193]

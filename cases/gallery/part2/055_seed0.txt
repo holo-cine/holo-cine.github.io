@@ -1,0 +1,11 @@
+Sample Index: 55
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] A young girl, [character1], with long braided hair, is releasing a glowing paper lantern into the night sky. The environment is a quiet lakeside at night, under a sky full of stars. This scene contains 4 shots. [per shot caption] Medium shot of [character1] holding a large, beautifully lit paper lantern, her face illuminated by its warm glow. [shot cut] Close-up centered on her face, she looks up with a hopeful expression as she prepares to release the lantern. [shot cut] Close-up of her hands as she gently lets go of the lantern. [shot cut] Wide shot of the single lantern floating upwards, joining a few others high in the starry night sky, with [character1] as a small silhouette below.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

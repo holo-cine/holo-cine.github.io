@@ -1,0 +1,11 @@
+Sample Index: 21
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a lone hiker, [character1], reaching the summit of a mountain at sunrise. [character1] is wearing hiking gear and has a backpack. The view is spectacular, with clouds below and the sun casting a golden glow. This scene contains 5 shots. [per shot caption] Medium shot of [character1] taking the last step onto the summit, looking tired but triumphant. [shot cut] Wide shot showing the incredible panoramic view from the mountain top. [shot cut] Close-up of [character1]'s face, filled with awe and wonder as they survey the landscape. [shot cut] [character1] slowly removes their backpack and sits down on a rock. [shot cut] Medium shot from behind, showing [character1] peacefully watching the beautiful sunrise.
+
+Shot Cut Frames:
+--------------------------------------------------
+[193, 385, 577, 769]

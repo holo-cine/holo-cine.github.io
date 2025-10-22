@@ -1,0 +1,11 @@
+Sample Index: 13
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features one character, [character1], a young woman with long black hair, sitting on her bed and looking at an old photograph. Her room is cozy and decorated with fairy lights. This scene contains 5 shots. [per shot caption] Medium shot of [character1] holding a faded photograph in her hands. [shot cut] Close-up on the photograph, showing a happy family. [shot cut] Close-up of [character1]'s face, a nostalgic and slightly sad smile on her lips. [shot cut] She gently traces a figure in the photo with her fingertip. [shot cut] Medium shot as she hugs the photograph to her chest, closing her eyes.
+
+Shot Cut Frames:
+--------------------------------------------------
+[193, 385, 577, 769]

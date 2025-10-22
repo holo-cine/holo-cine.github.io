@@ -1,0 +1,11 @@
+Sample Index: 2
+Seed: 0
+Processed by: Rank 2
+
+Prompt:
+--------------------------------------------------
+[global caption] An autumn trail in a national park. [character1] is a young hiker taking a break. Her well-worn backpack has a distinctive embroidered patch of a mountain range on it. This scene contains 4 shots. [per shot caption] Medium shot of [character1] sitting on a log, drinking water. Her backpack is on the ground beside her, the mountain patch visible. [shot cut] Close-up of her face, catching her breath. [shot cut] She reaches down and adjusts a strap on her backpack. [shot cut] A close-up shot of the backpack as her hand touches it, showing the texture and consistent design of the embroidered mountain patch.
+
+Shot Cut Frames:
+--------------------------------------------------
+[65, 125, 185]

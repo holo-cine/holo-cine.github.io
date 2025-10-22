@@ -1,0 +1,11 @@
+Sample Index: 70
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] A recreation of the famous 'Here's Johnny!' scene from 'The Shining'. A terrified woman, [character1], is hiding in a bathroom. This scene contains 4 shots. [per shot caption] A shot of the wooden bathroom door, as an axe blade violently smashes through it. [shot cut] The axe chops a hole in the door. [shot cut] A man's crazed face, [character2], appears in the hole. [shot cut] A menacing close-up of [character2]'s face as he says the famous line, 'Here's Johnny!'.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

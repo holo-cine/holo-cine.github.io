@@ -1,0 +1,11 @@
+Sample Index: 11
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] A samurai warrior, [character1], with a stoic expression and a traditional topknot, wearing dark, simple samurai attire (hakama and gi). He is in a serene Japanese rock garden with raked sand, moss-covered stones, and a single cherry blossom tree. The time is dusk. This scene contains 5 shots. [per shot caption] Wide shot of the tranquil rock garden, with [character1] kneeling in seiza position in the center. [shot cut] Medium shot of [character1] with his eyes closed, hands resting on his thighs, in deep meditation. [shot cut] Close-up of his hand resting near the hilt of his katana, which lies on the ground beside him. [shot cut] Extreme close-up of a single pink cherry blossom petal slowly fluttering down and landing on the raked sand in front of him. [shot cut] Medium close-up of [character1] slowly opening his eyes, his gaze calm and sharp.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 89, 141, 193]

@@ -1,0 +1,11 @@
+Sample Index: 80
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene is a moody, rain-slicked city street at night. A lone saxophonist, [character1], plays a soulful melody under a street light. This scene contains 6 shots. [per shot caption] Medium shot of [character1] playing the saxophone, rain drizzling down. [shot cut] Close-up of their fingers moving expertly over the saxophone keys. [shot cut] Close-up of the rain drops hitting the shiny brass instrument. [shot cut] Medium close-up of their face, eyes closed, lost in the music. [shot cut] A low-angle shot looking up at the musician against the dark, rainy sky. [shot cut] Wide shot of the empty street, with the lonely sound of the saxophone filling the night.
+
+Shot Cut Frames:
+--------------------------------------------------
+[41, 81, 121, 161, 201]

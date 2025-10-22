@@ -1,0 +1,11 @@
+Sample Index: 6
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene is set in a high-fashion photography studio with stark white walls and professional lighting equipment. [character1] is a top model with avant-garde makeup and an otherworldly, aloof expression, wearing a bizarre, sculptural outfit. [character2] is a famous photographer, dressed in all black, intensely focused behind their camera. This scene contains 4 shots. [per shot caption] Medium shot of [character1] holding a difficult, artistic pose under the bright studio lights. [shot cut] Close-up of [character2]'s eye as they look through the camera's viewfinder, concentrating. [shot cut] A dynamic close-up of [character1]'s face, as the photographer's flash goes off, freezing their striking expression. [shot cut] Medium shot of [character2] lowering the camera, a rare, satisfied smile appearing on their face as they look at the model.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

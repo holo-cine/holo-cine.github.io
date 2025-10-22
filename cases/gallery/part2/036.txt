@@ -1,0 +1,11 @@
+Sample Index: 36
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a noir detective, [character1], with a classic trench coat and fedora, casting a long shadow. The environment is a fog-filled city alley at night, lit by a single flickering streetlamp. This scene contains 4 shots. [per shot caption] Medium shot of [character1] lighting a cigarette, the flare of the match briefly illuminating his weary face. [shot cut] Close-up of his face, half in shadow, as he takes a slow drag from the cigarette, smoke curling from his lips. [shot cut] Low-angle medium shot as he looks up towards a window in a nearby building. [shot cut] Wide shot of the empty, foggy alley as [character1] begins to walk slowly away from the camera, his silhouette eventually disappearing into the mist.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

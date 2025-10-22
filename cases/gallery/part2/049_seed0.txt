@@ -1,0 +1,11 @@
+Sample Index: 49
+Seed: 0
+Processed by: Rank 1
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a jazz trumpeter, [character1], a man with a soulful expression, wearing a hat and a sharp suit. The environment is a smoky, dimly-lit jazz club with a small stage and an intimate audience. This scene contains 5 shots. [per shot caption] Medium shot of [character1] on stage, playing a slow, melancholic tune on his trumpet under a single spotlight. [shot cut] Close-up of his fingers pressing the valves of the shiny brass trumpet. [shot cut] Medium close-up of his face, eyes closed, cheeks puffed as he pours his emotion into the music. [shot cut] Close-up of the bell of the trumpet, with smoke from the club swirling around it. [shot cut] Medium shot as he plays the last long, lingering note and slowly lowers the trumpet, the faint sound of applause beginning in the background.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 89, 141, 193]

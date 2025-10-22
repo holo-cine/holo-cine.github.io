@@ -1,0 +1,11 @@
+Sample Index: 17
+Seed: 0
+Processed by: Rank 1
+
+Prompt:
+--------------------------------------------------
+[global caption] A bright, cluttered artist's studio. [character1], an artist, stands before a large, half-finished canvas on an easel. Jars of paint and brushes are scattered on a nearby table. This scene contains 4 shots. [per shot caption] Medium shot of [character1] studying the canvas with a critical eye. [shot cut] Close-up of the intricate details on the canvas she is working on. [shot cut] Close-up of her face, a mix of frustration and inspiration. [shot cut] A return to the initial medium shot, but now from a lower angle. The canvas, paints, and the artist's pose are consistent with the first shot.
+
+Shot Cut Frames:
+--------------------------------------------------
+[57, 117, 177]

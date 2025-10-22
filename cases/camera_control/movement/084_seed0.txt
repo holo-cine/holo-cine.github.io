@@ -1,0 +1,11 @@
+Sample Index: 84
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a lone explorer, [character1], discovering a hidden waterfall in a dense, green jungle. This scene contains 2 shots demonstrating camera movement. [per shot caption] The shot starts as a close-up on [character1]'s face, showing their tired but determined expression. The camera then slowly dollies out, revealing they are standing at the entrance to a cave. [shot cut] Starting from a medium shot of [character1] from behind, the camera slowly pans left, moving past them to reveal a spectacular hidden waterfall and a lush lagoon inside the cave.
+
+Shot Cut Frames:
+--------------------------------------------------
+[121]

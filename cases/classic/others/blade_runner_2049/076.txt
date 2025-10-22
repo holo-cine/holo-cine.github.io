@@ -1,0 +1,12 @@
+Sample Index: 76
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] A scene inspired by 'Blade Runner 2049'. A detective, [character1], walks through a deserted, orange-hued Las Vegas, the air thick with dust. This scene contains 3 shots. [per shot caption] An extreme wide shot of the detective as a tiny silhouette against the backdrop of giant, decaying statues and ruined casinos under a hazy, orange sky. [shot cut] A tracking shot follows the detective as they walk down the abandoned, sand-covered strip. [shot cut] A final close-up of the detective's face, their expression weary, as they are battered by the radioactive wind.
+
+Shot Cut Frames:
+--------------------------------------------------
+[81, 161]
+

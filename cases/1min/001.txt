@@ -1,0 +1,11 @@
+Sample Index: 1
+Seed: 0
+Processed by: Rank 1
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features one main character: [character1], a young female botanist with long braided hair, wearing practical exploration gear. The environment is a surreal, bioluminescent forest at night, where plants and fungi emit a soft, ethereal blue and green light. This scene contains 10 shots. [per shot caption] Wide shot of the magical, glowing forest, with [character1] standing in the center. [shot cut] Medium shot of [character1] looking around in awe, her face illuminated by the glowing flora. [shot cut] Close-up of her hand gently touching a mushroom that brightens in response. [shot cut] Medium close-up of her fascinated expression as she observes the light. [shot cut] She kneels down. Medium shot of her taking out a sketchbook. [shot cut] Close-up of her hand sketching the intricate patterns of a glowing flower. [shot cut] A shot from behind her, looking over her shoulder at the detailed drawing. [shot cut] Close-up of her face, a soft smile of discovery and wonder. [shot cut] She looks up from her book. Medium shot of a glowing, moth-like creature fluttering past her. [shot cut] Wide shot of [character1] sitting peacefully in the heart of the glowing forest, now part of the scene.
+
+Shot Cut Frames:
+--------------------------------------------------
+[101, 193, 285, 377, 469, 561, 653, 745, 849]

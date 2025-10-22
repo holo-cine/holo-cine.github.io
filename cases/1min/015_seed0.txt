@@ -1,0 +1,11 @@
+Sample Index: 15
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene shows two characters in a high-fantasy throne room. [character1] is a young queen with an elaborate crown and regal attire, looking burdened. [character2] is her loyal, aging advisor with a long grey beard, standing beside her. This scene contains 7 shots. [per shot caption] Medium shot of [character1] on the throne, looking down at a map spread on a table. [shot cut] Close-up of her face, showing the weight of her decisions. [shot cut] Medium shot as [character2] places a reassuring hand on her shoulder. [shot cut] [character1] looks up at him, her expression softening. [shot cut] Close-up of [character2]'s wise and kind eyes as he speaks. [shot cut] Medium shot of [character1] listening intently, then nodding with renewed resolve. [shot cut] She stands up, her posture now confident and commanding.
+
+Shot Cut Frames:
+--------------------------------------------------
+[137, 273, 413, 549, 685, 821]

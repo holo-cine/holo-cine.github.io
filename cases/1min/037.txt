@@ -1,0 +1,11 @@
+Sample Index: 37
+Seed: 0
+Processed by: Rank 5
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features 13 shots with two main characters. [character1] is a young man with dark hair styled in a traditional bun adorned with an ornate silver and blue crown, wearing dark blue traditional robes. [character2] is a young woman with dark hair in a traditional updo with decorative pins and braids, wearing light-colored traditional robes. The environment shifts between a traditionally furnished indoor study or library with wooden shelves and lanterns, and an outdoor, shrine-like setting with stone ground and wooden structures. [per shot caption] Close-up of [character1]'s pensive face, looking down, then slowly lifting his gaze. [shot cut] Close-up of [character1]'s face, subtly shifting expression between looking up and down, maintaining a pensive mood. [shot cut] Close-up of [character2]'s worried face, eyes darting slightly. [shot cut] Close-up of [character1]'s face, looking up slightly with a serious expression. [shot cut] Medium shot of [character1] bowing deeply towards [character2], who is seated, then standing up. [shot cut] Close-up of [character1]'s face, looking forward with a serious and slightly sad expression. [shot cut] Close-up of [character2]'s face, showing concern turning into resolve. [shot cut] Close-up of [character1]'s profile, turning to face forward, his expression changing to resolve. [shot cut] Medium shot of [character1] standing opposite [character2], who is seated, both gazing intensely at each other. [shot cut] Close-up of [character2]'s face, looking directly ahead with a resolute gaze. [shot cut] Close-up of [character1]'s face, appearing sad and contemplative with a slight frown. [shot cut] Close-up of [character2]'s hand holding a green leaf, extinguishing a candle. [shot cut] Wide shot of [character2] kneeling at an outdoor shrine, surrounded by candles and offerings, appearing contemplative.
+
+Shot Cut Frames:
+--------------------------------------------------
+[65, 229, 329, 377, 469, 509, 553, 617, 657, 705, 841, 881]

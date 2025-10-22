@@ -1,0 +1,11 @@
+Sample Index: 52
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a master calligrapher, [character1], an elegant woman with graceful hands and dark hair pinned up. She wears a simple silk robe. The environment is a tranquil, minimalist room with a low wooden table, rice paper, and a window overlooking a bamboo garden. This scene contains 5 shots. [per shot caption] Medium shot of [character1] kneeling at the table, grinding an inkstick on an inkstone with slow, deliberate movements. [shot cut] Close-up centered on her hands as she holds a calligraphy brush, dipping the tip into the freshly made black ink. [shot cut] Medium close-up showing her complete face, she holds the brush poised above the paper, her expression one of serene concentration. [shot cut] Extreme close-up of the brush tip touching the paper, beginning a single, fluid stroke. [shot cut] A top-down shot showing the first character beautifully written on the white rice paper, steam gently rising from a nearby cup of tea.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 89, 141, 193]

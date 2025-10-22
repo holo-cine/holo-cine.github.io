@@ -1,0 +1,11 @@
+Sample Index: 18
+Seed: 0
+Processed by: Rank 2
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene is set on a futuristic, high-speed train with sleek interiors and a large window showing a blurry, utopian landscape passing by. The character is [character1], a woman with a futuristic hairstyle and minimalist clothing, looking pensive. This scene contains 4 shots. [per shot caption] Medium shot of [character1] sitting by the window, looking out at the passing scenery. [shot cut] Close-up of her reflection in the window, her face overlaid on the fast-moving world outside. [shot cut] Medium close-up as she turns her head away from the window, a look of quiet determination on her face. [shot cut] Close-up of her hand resting on a high-tech data pad on the table in front of her.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

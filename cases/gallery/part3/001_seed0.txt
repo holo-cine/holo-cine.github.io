@@ -1,0 +1,11 @@
+Sample Index: 1
+Seed: 0
+Processed by: Rank 1
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene captures a heartfelt reunion on a windswept cliffside overlooking a stormy sea. [character1] is a weathered sailor with a graying beard and kind eyes, wearing a heavy wool sweater. [character2] is a woman with her hair blowing in the wind, wearing a simple, rustic dress, her face etched with years of waiting. The environment is dramatic and moody, with crashing waves, gray skies, and soaring seagulls. This scene contains 4 shots. [per shot caption] Medium shot of [character2] standing at the edge of the cliff, looking out at the sea, her expression filled with longing. [shot cut] Close-up of her face as she hears a sound and turns, her eyes widening in disbelief. [shot cut] Over-the-shoulder shot from behind [character2], revealing [character1] standing a few paces away, a tired but loving smile on his face. [shot cut] A powerful close-up of [character2]'s face as tears of joy stream down her cheeks before she moves towards him.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

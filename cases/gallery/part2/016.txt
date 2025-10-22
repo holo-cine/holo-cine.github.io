@@ -1,0 +1,11 @@
+Sample Index: 16
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features an elderly musician, [character1], with soulful eyes and expressive hands, playing a grand piano. The room is dusty and filled with old furniture, with rays of afternoon sun cutting through the gloom. This scene contains 6 shots. [per shot caption] Medium shot of [character1] playing the piano, his body swaying gently with the music. [shot cut] Close-up of his wrinkled hands moving gracefully over the yellowed piano keys. [shot cut] Medium close-up of his face, eyes closed in concentration and emotion. [shot cut] Close-up of a small, faded photograph of a young woman resting on the piano's music stand. [shot cut] A rack focus shot from the photograph in the foreground to [character1]'s face in the background. [shot cut] Medium shot as he plays the final, soft chord and his hands come to a rest on the keys.
+
+Shot Cut Frames:
+--------------------------------------------------
+[37, 73, 113, 169, 205]

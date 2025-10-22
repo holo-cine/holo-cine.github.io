@@ -1,0 +1,11 @@
+Sample Index: 39
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two main characters: [character1] is a retired astronaut with cropped grey hair and an expression of deep wonder, wearing a casual jacket; [character2] is a small, futuristic drone with blinking blue lights. The environments include a high-ceilinged, minimalist apartment and a breathtaking view of Earth from space (simulated). This scene contains 6 shots. [per shot caption] Medium close-up of [character1] sitting on the couch, staring blankly at the wall, a slight melancholy. [shot cut] Close-up of [character2] the drone hovering and flashing a soft blue light next to [character1]. [shot cut] Medium shot of [character1] reaching out and gently touching the drone. [shot cut] Transition to space view: Close-up of the simulated Earth, vibrant blue and white, slowly spinning. [shot cut] Return: Medium close-up of [character1]'s face, his eyes now lit up with the remembered wonder of space. [shot cut] Close-up of [character1] smiling, then slowly closing his eyes, peaceful.
+
+Shot Cut Frames:
+--------------------------------------------------
+[177, 337, 517, 685, 869]

@@ -1,0 +1,11 @@
+Sample Index: 84
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] A scene inspired by 'E.T. the Extra-Terrestrial'. A young boy, [character1], is riding his bicycle at night. In the front basket is a small, gentle alien, [character2]. This scene contains 3 shots. [per shot caption] Medium shot of the boy pedaling furiously. [shot cut] The alien in the basket points a glowing finger upwards, using its powers. [shot cut] A beautiful, iconic wide shot of the bicycle's silhouette as it flies through the air, passing in front of a giant, full moon.
+
+Shot Cut Frames:
+--------------------------------------------------
+[81, 161]

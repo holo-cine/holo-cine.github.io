@@ -1,0 +1,11 @@
+Sample Index: 16
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] A warm, inviting dining room. [character1] and [character2], an elderly couple, are sitting at a dinner table. A half-eaten meal and a bottle of wine are on the table. This scene contains 4 shots. [per shot caption] Medium shot of [character1] and [character2] talking and smiling at the dinner table. [shot cut] A brief cut to a close-up of their cat sleeping soundly in a chair nearby. [shot cut] Another brief cut to a close-up of the wine bottle. [shot cut] Return to a medium shot of the couple at the table, now from a slightly different angle. They are still talking, and the state of the meal and wine on the table remains perfectly consistent.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

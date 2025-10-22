@@ -1,0 +1,11 @@
+Sample Index: 71
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two main characters: [character1] is an elderly man with a kind face and a flat cap, sitting on a park bench; [character2] is his wife, an elderly woman with soft white hair and a warm smile, sitting beside him. The environment is a peaceful park in autumn, with golden leaves on the ground and a gentle afternoon light. This scene contains 6 shots. [per shot caption] Medium shot of the couple sitting on the bench, [character2] feeding pigeons from a small paper bag. [shot cut] Close-up of [character1]'s face, watching his wife with a look of deep, enduring love. [shot cut] Close-up of their wrinkled hands, resting together on the bench, his hand gently patting hers. [shot cut] Medium close-up of [character2] turning to [character1] and sharing a quiet, knowing smile. [shot cut] A shot from their point of view, looking at the pigeons fluttering on the ground before them. [shot cut] A slightly wider medium shot of the couple, a perfect picture of lifelong companionship, as a gentle breeze rustles the autumn leaves around them.
+
+Shot Cut Frames:
+--------------------------------------------------
+[37, 77, 121, 161, 205]

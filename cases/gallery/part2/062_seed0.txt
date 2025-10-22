@@ -1,0 +1,11 @@
+Sample Index: 62
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene is a 1920s speakeasy bar, dimly lit and elegant. The character is [character1], a woman with a stylish flapper haircut and a beaded dress, sitting alone at the bar. This scene contains 6 shots. [per shot caption] Medium shot of [character1] slowly stirring a cocktail in a fancy glass. [shot cut] Close-up of the glass, showing the ice cubes clinking and the cherry garnish. [shot cut] Medium close-up of her face, she has a pensive, slightly melancholic expression as she looks into her drink. [shot cut] She lifts her gaze and looks at her reflection in the mirror behind the bar. [shot cut] Close-up centered on her eyes in the reflection, they look sad. [shot cut] She takes a slow, deliberate sip from her cocktail.
+
+Shot Cut Frames:
+--------------------------------------------------
+[41, 81, 121, 161, 201]

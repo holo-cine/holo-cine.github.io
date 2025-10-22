@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HoloCine: Holistic Generation of Cinematic Multi-Shot Video Narratives</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #222222;
+            color: #cfc6be;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.02) 2px, rgba(0, 0, 0, 0.02) 4px);
+            pointer-events: none;
+        }
+        /* .demo-video-section video {
+    border: 1px solid rgba(255, 255, 255, 0.15); /* 15%透明度的白色边框 */
+    /* box-sizing: border-box; 
+    } */ 
+
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-weight: 700;
+            font-style: italic;
+            color: #E57A3C;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            max-width: 1200px;
+            text-shadow: 2px 2px 0px rgb(212, 125, 63, 0.1);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 12px rgba(229, 122, 60, 0.25);
+        }
+
+        .hero-subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: #F0F0F0;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            /* text-transform: uppercase; */
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .demo-video-section {
+            max-width: 700px;
+            margin: 3rem auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .abstract-section {
+            max-width: 900px;
+            margin: 0 auto 1rem;
+            padding: 1.5rem 3rem;
+        }
+
+        .abstract-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #F0F0F0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .abstract-text {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: #F0F0F0;
+            text-align: left;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.3rem 1rem;
+            background: #D1B392;
+            color: #3C3026;
+            border: 3px solid #3C3026;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+            position: relative;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .nav-button:hover {
+            background: #d47d3f;
+            color: #3C3026;
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Section Navigation */
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .section-nav-item {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: rgba(212, 184, 150, 0.15);
+            color: #F0F0F0;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            border: 1px solid rgba(212, 125, 63, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        .section-nav-item:hover {
+            background: rgba(212, 125, 63, 0.2);
+            border-color: #d47d3f;
+            color: #D1B392;
+            transform: translateY(-1px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            background: #000000;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            font-style: italic;
+            color: #d47d3f;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title-2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #d47d3f;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            color: #F0F0F0;
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .subsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 600;
+            font-style: italic;
+            color: #F0F0F0;
+            text-align: center;
+            margin: 4rem 0 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .subsection-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .subsubsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            font-style: italic;
+            color: #F0F0F0;
+            text-align: center;
+            margin: 2.5rem 0 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .video-grid.two-col {
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        }
+
+        .video-grid.three-col {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .video-grid.three-col>.video-item {
+            flex: 0 1 380px;
+            max-width: 100%;
+        }
+
+        .video-grid.three-col>.video-item-wrapper {
+            flex: 0 1 380px;
+            max-width: 100%;
+        }
+
+        .video-item-wrapper .video-desc {
+            color: #F0F0F0;
+            text-align: center;
+        }
+
+        .video-grid.three-col-larger {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .video-grid.three-col-larger>.video-item {
+            flex: 0 1 430px;
+            max-width: 100%;
+        }
+
+        .video-grid.single-centered {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Comparison Section */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .comparison-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .comparison-label {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #d47d3f;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .comparison-video-wrapper {
+            position: relative;
+            background: #fff;
+            border: 3px solid #3C3026;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .comparison-video-wrapper:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .comparison-video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .comparison-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .video-item {
+            position: relative;
+            background: #e8e3d7;
+            border: 3px solid #3C3026;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .video-item:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-caption {
+            padding: 1rem 1.25rem;
+            background: #e8e3d7;
+            border-top: 2px solid #3C3026;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #2a2a2a;
+            min-height: 60px;
+            position: relative;
+        }
+
+        .caption-content {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            padding-right: 30px;
+        }
+
+        .caption-content.expanded {
+            -webkit-line-clamp: unset;
+            line-clamp: unset;
+        }
+
+        .caption-toggle {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 24px;
+            height: 24px;
+            background: #3C3026;
+            color: #D1B392;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .caption-toggle:hover {
+            background: #d47d3f;
+            color: #3C3026;
+        }
+
+        /* Decorative Elements */
+        .ornament {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 2rem;
+            color: #d47d3f;
+        }
+
+        /* Detail Memory Layout */
+        .emerging-capability-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emerging-capability-video {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .emerging-capability-image-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .emerging-capability-image-wrapper .image-desc {
+            color: #F0F0F0;
+            text-align: center;
+        }
+
+        .emerging-capability-image {
+            position: relative;
+            background: #fff;
+            border: 3px solid #3C3026;
+            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .emerging-capability-image:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .emerging-capability-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .abstract-section {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .video-grid.two-col,
+            .video-grid.three-col {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid.three-col>.video-item {
+                flex-basis: 100%;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem;
+            }
+
+            .nav-button {
+                justify-content: center;
+            }
+
+            .section-nav {
+                gap: 0.3rem;
+                margin-top: 1.5rem;
+            }
+
+            .section-nav-item {
+                font-size: 0.85rem;
+                padding: 0.35rem 0.7rem;
+            }
+
+            .emerging-capability-row {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+        }
+
+        /* Authors Section */
+        .authors-section {
+            margin-top: 1rem;
+            text-align: center;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .authors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0rem 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .author-block {
+            font-size: 1rem;
+            color: #F0F0F0;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .author-block sup {
+            font-size: 0.75em;
+            color: #d47d3f;
+            font-weight: 600;
+        }
+
+        .author-block a {
+            color: #F0F0F0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .author-block a:hover {
+            color: #d47d3f;
+            border-bottom: 2px solid #d47d3f;
+        }
+
+        .author-affiliation {
+            margin-bottom: 1.5rem;
+            color: #F0F0F0;
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .affiliation-text {
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }
+
+        .affiliation-text sup {
+            color: #d47d3f;
+            font-weight: 600;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-item {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Responsive - Authors */
+        @media (max-width: 768px) {
+            .authors {
+                gap: 0.3rem 1rem;
+            }
+
+            .author-block {
+                font-size: 0.9rem;
+            }
+
+            .author-affiliation {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .author-block {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="hero-title">HoloCine</h1>
+        <p class="hero-subtitle">Holistic Generation of Cinematic Multi-Shot Long Video Narratives</p>
+
+        <div class="authors-section">
+            <div class="authors">
+                <span class="author-block">
+                    <a href="https://yihao-meng.github.io/">Yihao Meng</a><sup>1,2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://ken-ouyang.github.io/">Hao Ouyang</a><sup>2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://bruceyy.com/">Yue Yu</a><sup>1,2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://github.com/qiuyu96">Qiuyu Wang</a><sup>2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://github.com/encounter1997">Wen Wang</a><sup>2,3</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://felixcheng97.github.io/">Ka Leong Cheng</a><sup>2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=0uO4fzkAAAAJ&hl=zh-CN">Hanlin
+                        Wang</a><sup>1,2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://yixuanli98.github.io/">Yixuan Li</a><sup>2,4</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=nNQU71kAAAAJ&hl=zh-CN">Cheng
+                        Chen</a><sup>2,5</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://zengyh1900.github.io/">Yanhong Zeng</a><sup>2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="https://shenyujun.github.io/">Yujun Shen</a><sup>2</sup>
+                </span>
+                <span class="author-block">
+                    <a href="http://huamin.org/">Huamin Qu</a><sup>1</sup>
+                </span>
+            </div>
+
+            <div class="author-affiliation">
+                <span class="affiliation-text"><sup>1</sup>HKUST, <sup>2</sup>Ant Group, <sup>3</sup>ZJU,
+                    <sup>4</sup>CUHK, <sup>5</sup>NTU</span>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
+                <span>📄</span>
+                <span>Paper</span>
+            </a>
+            <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
+                <span>💻</span>
+                <span>GitHub</span>
+            </a>
+            <a class="nav-button" href="#" target="_blank" rel="noopener noreferrer">
+                <span>🤗</span>
+                <span>Model</span>
+            </a>
+        </div>
+
+        <div class="section-nav">
+            <a href="#highlights" class="section-nav-item">Highlight</a>
+            <a href="#classics" class="section-nav-item">Classics Recreated</a>
+            <a href="#emerging-capability" class="section-nav-item">Advanced Capability</a>
+            <a href="#gallery" class="section-nav-item">Diverse Results</a>
+
+        </div>
+
+        <div class="demo-video-section">
+            <video src="holocine.mp4" controls autoplay="false" style="width: 100%;"></video>
+        </div>
+
+        <div class="abstract-section">
+            <h2 class="abstract-title">Abstract</h2>
+            <p class="abstract-text">
+                State-of-the-art text-to-video models excel at generating isolated clips but fall short of creating
+                coherent, multi-shot narratives—the essence of storytelling. We bridge this "narrative gap" with
+                <b>HoloCine</b>, a framework that generates entire scenes <b>holistically</b> to ensure global
+                consistency from the first shot to the last. Our architecture achieves precise directorial control
+                through a Window Cross-Attention mechanism that localizes text prompts to specific
+                shots,
+                while a Sparse Inter-Shot Self-Attention pattern—dense within shots but sparse between
+                them—ensures the efficiency required for minute-scale generation. Beyond setting a new state-of-the-art
+                in narrative coherence, HoloCine develops remarkable emergent abilities: a persistent memory for
+                characters and scenes, and an intuitive grasp of cinematic techniques. Our work marks a pivotal shift
+                from clip synthesis towards automated cinematic storytelling.
+            </p>
+        </div>
+
+
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <!-- Highlight Demos Section -->
+    <section class="section" id="highlights">
+        <h2 class="section-title">Highlight</h2>
+        <p class="section-subtitle">
+            HoloCine excels in generating coherent, emotionally resonant
+            multi-shot narratives with consistent characters and environments.
+        </p>
+        <!-- <div class="video-grid two-col"> -->
+        <div class="video-grid two-col">
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/highlight/008_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is set in a lavish, 1920s Art Deco ballroom during a masquerade party. [character1] is a mysterious woman with a sleek bob, wearing a sequined silver dress and an ornate feather mask. [character2] is a dapper gentleman in a black tuxedo, his face half-hidden by a simple black domino mask. The environment is filled with champagne fountains, a live jazz band, and dancing couples in extravagant costumes. This scene contains 5 shots. [per shot caption] Medium shot of [character1] standing by a pillar, observing the crowd, a champagne flute in her hand. [shot cut] Close-up of [character2] watching her from across the room, a look of intrigue on his visible features. [shot cut] Medium shot as [character2] navigates the crowd and approaches [character1], offering a polite bow. [shot cut] Close-up on [character1]'s eyes through her mask, as they crinkle in a subtle, amused smile. [shot cut] A stylish medium two-shot of them standing together, the swirling party out of focus behind them, as they begin to converse.
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/12_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a bio-engineering lab, [character1], a scientist, watches
+                    as [character2], an android, learns to tend to a garden of synthetic, light-emitting plants. This
+                    scene contains 6 shots. [per shot caption] Medium shot of the android gently touching the petal of a
+                    plant that glows in response. [shot cut] The scientist, [character1], watches on a monitor, a
+                    thoughtful expression on their face. [shot cut] The android tilts its head, seemingly mimicking the
+                    plant's gentle sway. [shot cut] Close-up on the android's metallic fingers as it prunes a leaf with
+                    incredible delicacy. [shot cut] Rack focus from the android's peaceful work to the scientist, who
+                    smiles, seeing a sign of emergent empathy. [shot cut] A final shot of the garden glowing
+                    rhythmically, as if in harmony with the android.
+                </div>
+            </div>
+            
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/highlight/038_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a magical encounter in a misty, ancient Celtic ruin at dawn. [character1] is a modern-day historian, a skeptical woman with practical hiking gear and a camera. [character2] is the spectral figure of an ancient Celtic queen, translucent and ethereal, with long, flowing red hair and a silver circlet. The environment is comprised of mossy standing stones and rolling green hills shrouded in morning mist. This scene contains 5 shots. [per shot caption] Medium shot of [character1] carefully touching a moss-covered standing stone, a look of academic interest on her face. [shot cut] Close-up of her face, her expression changing to one of utter shock as she sees something off-camera. [shot cut] A soft-focus shot of [character2] slowly materializing from the mist between two stones. [shot cut] Medium shot of [character1] stumbling backward, lowering her camera, her skepticism completely shattered. [shot cut] Close-up of [character2]'s spectral face, her expression sad and timeless as she looks at the historian.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/part2/032_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a young painter, [character1], with paint-smudged cheeks and intense, focused eyes. Her hair is tied up messily. The setting is a bright, sun-drenched art studio with large windows, canvases, and the smell of oil paint. This scene contains 6 shots. [per shot caption] Medium shot of [character1] standing back from a large canvas, brush in hand, critically observing her work. [shot cut] Close-up of her hand holding the brush, dabbing it thoughtfully onto a palette of vibrant colors. [shot cut] Extreme close-up of her eyes, narrowed in concentration as she studies the canvas. [shot cut] Close-up on the canvas, showing a detailed, textured brushstroke being slowly applied. [shot cut] Medium close-up of [character1]'s face, a small, satisfied smile appears as she finds the right color. [shot cut] Over-the-shoulder shot showing her add a final, delicate highlight to the painting.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/part2/005_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features two main characters: [character1] is a cyberpunk hacker with neon-colored cybernetic implants on her temple and a rebellious undercut hairstyle, wearing a worn jacket; [character2] is a stoic corporate enforcer in a sleek, black armored suit, his face mostly obscured by a helmet. The environment is a rain-slicked, neon-drenched alley in a futuristic city. This scene contains 6 shots. [per shot caption] Medium shot of [character1] cornered against a wall, rain dripping from her hair, her expression a mix of fear and defiance. [shot cut] Close-up of [character2]'s imposing figure advancing slowly, his heavy boots splashing in puddles. [shot cut] Medium close-up of [character1]'s face as she glares, a small data chip held tightly in her fist. [shot cut] Close-up of [character2]'s gloved hand extending, demanding the chip without a word. [shot cut] Extreme close-up of [character1]'s eyes, a quick decision being made. [shot cut] Close-up on [character1]'s forearm as she presses the chip into a hidden data port. Her cybernetics glow intensely, then the chip emits a puff of smoke, completely fried. She looks up at [character2], smirking through the pain.</div>
+            </div>
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/highlight/103_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features two main characters: [character1] is a
+                    young man, a street artist, with spray paint on his clothes and a creative energy about him;
+                    [character2] is a police officer, older and more world-weary, observing him. The environment is a
+                    city alleyway at night, the brick wall is covered in vibrant graffiti. This scene contains 6 shots.
+                    [per shot caption] Medium shot of [character1] shaking a can of spray paint and starting a new piece
+                    on a blank section of wall. [shot cut] Close-up of the spray can's nozzle as a bright color is
+                    sprayed onto the brick. [shot cut] A silent figure, [character2], steps into the edge of the frame,
+                    watching from a distance, his face unreadable. [shot cut] Medium close-up of the artist's face,
+                    completely absorbed in his work, unaware he is being watched. [shot cut] [character2] takes a slow
+                    step forward, and the artist finally freezes, hearing him. [shot cut] A tense medium shot of the
+                    two, the artist caught in the act, the cop's expression slowly changing from stern to one of
+                    unexpected appreciation for the art. </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/part3/006_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is set in a high-fashion photography studio with stark white walls and professional lighting equipment. [character1] is a top model with avant-garde makeup and an otherworldly, aloof expression, wearing a bizarre, sculptural outfit. [character2] is a famous photographer, dressed in all black, intensely focused behind their camera. This scene contains 4 shots. [per shot caption] Medium shot of [character1] holding a difficult, artistic pose under the bright studio lights. [shot cut] Close-up of [character2]'s eye as they look through the camera's viewfinder, concentrating. [shot cut] A dynamic close-up of [character1]'s face, as the photographer's flash goes off, freezing their striking expression. [shot cut] Medium shot of [character2] lowering the camera, a rare, satisfied smile appearing on their face as they look at the model.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/74_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a poignant anime style, an aging robot, [character1], shows a collection of fireflies to a young girl, [character2], in a quiet summer field at dusk. This scene contains 5 shots. [per shot caption] Wide shot of the field under a beautiful twilight sky. [shot cut] Medium shot of the robot and the girl sitting together in the tall grass. [shot cut] Close-up of the robot's gentle, metallic hands as it opens a jar. [shot cut] A cloud of fireflies emerges from the jar, beginning to glow and float around the two of them. [shot cut] A final, heartwarming shot of the girl's face, filled with joy and wonder, illuminated by the soft light of the fireflies.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/0045_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene takes place in a warm, somewhat cluttered indoor environment, possibly a living room or office. The main characters include: [character1], a man with medium-length dark brown hair, wearing a light beige suit jacket and a white collared shirt; [character2], a man with long dreadlocks, wearing sunglasses and a patterned brown and white knitted sweater; [character3], a man with short brown hair, wearing a dark green or black collared jacket over a t-shirt; and [character4], an individual whose ear is visible in some shots, implying they are a conversational partner. There are 6 shots in this scene. [per shot caption] Medium shot of [character1] looking towards [character4] and gesturing with his hand. [shot cut] Medium close-up of [character2] holding and examining a record album titled "MARCUS CHILDREN Burning Spear". [shot cut] Medium shot of [character3] standing with a handgun, looking to the left. [shot cut] Medium close-up of [character2] holding the record album, then lowering it slightly. [shot cut] Medium shot of [character1] pointing towards the camera, then turning and walking out of frame to the left, leaving [character4]'s ear visible. [shot cut] Medium shot of [character3] looking up, scanning the room.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/gallery/004_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is set in an enchanted, bioluminescent forest at twilight. [character1] is an ancient elf with long, silver hair braided with glowing flowers, wearing ethereal white robes. [character2] is a lost human child with short, messy brown hair and wide, fearful eyes, clutching a wooden toy. The environment is filled with giant, glowing mushrooms, sparkling flora, and shafts of moonlight breaking through a thick canopy. This scene contains 5 shots. [per shot caption] Medium shot of [character2] hiding behind a large, glowing mushroom, peering out nervously. [shot cut] Close-up of [character1]'s hand, fingers adorned with delicate rings, gently touching a luminous plant, causing it to glow brighter. [shot cut] Medium shot of [character1] turning their head, their pointed ears catching the faint sound of the child's whimper. [shot cut] Close-up of [character2]'s face, a tear rolling down their cheek, illuminated by the blue light of the forest. [shot cut] A soft-focus shot from the child's perspective, showing [character1] approaching slowly with a kind, reassuring smile, their form haloed by the forest's light.</div>
+            </div>
+
+        </div>
+        <div style="margin-top: 4rem;">
+            <h2 class="subsection-title">Comparison with commercial models</h2>
+            <p class="section-subtitle">
+                HoloCine produces state-of-the-art results in narrative video generation. While most commercial models, exemplified by Kling, are still limited to single-clip synthesis, HoloCine is designed for holistic, multi-shot storytelling. As an open-source model, our results are comparable to the latest industry leader Sora 2.
+            </p>
+
+            <!-- Comparison 1: Soldier -->
+            <div class="comparison-grid" style="margin-bottom: 4rem;">
+                <div class="comparison-item">
+                    <div class="comparison-label">Kling 2.5 Turbo</div>
+                    <div class="comparison-video-wrapper">
+                        <div class="comparison-video-container">
+                            <video controls loop muted>
+                                <source src="cases/kling/kling_soldier.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">Sora 2</div>
+                    <div class="comparison-video-wrapper">
+                        <div class="comparison-video-container">
+                            <video controls loop muted>
+                                <source src="cases/sora2/sora2_soldier.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">HoloCine (Ours)</div>
+                    <div class="comparison-video-wrapper">
+                        <div class="comparison-video-container">
+                            <video controls loop muted>
+                                <source src="cases/highlight/video_rank7_sample31_seed0_2.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison 2: Boxing -->
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comparison-label">Kling 2.5 Turbo</div>
+                    <div class="comparison-video-wrapper">
+                        <div class="comparison-video-container">
+                            <video controls loop muted>
+                                <source src="cases/kling/kling_boxing.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">Sora 2</div>
+                    <div class="comparison-video-wrapper">
+                        <div class="comparison-video-container">
+                            <video controls loop muted>
+                                <source src="cases/sora2/sora2_boxing.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">HoloCine (Ours)</div>
+                    <div class="comparison-video-wrapper">
+                        <div class="comparison-video-container">
+                            <video controls loop muted>
+                                <source src="cases/highlight/037_seed0.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+    <!-- Classic Reproduction Section -->
+    <section class="section" id="classics">
+        <h2 class="section-title">Classic Film Recreation</h2>
+        <p class="section-subtitle">
+            HoloCine is able to reproduce and recreate iconic scenes from classic films,
+            demonstrating understanding of cinematic heritage and style.
+        </p>
+
+        <h3 class="subsection-title">Titanic - Recreation</h3>
+        <div class="video-grid three-col">
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/titanic/titanic_selection/recreate/000_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Fly-tanic</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/titanic/titanic_selection/recreate/008_seed0 (1).mp4"
+                            type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Pixa-nic
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/titanic/titanic_selection/recreate/012_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Ever-tanic</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/titanic/titanic_selection/recreate/023_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Lala-tanic</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/titanic/titanic_selection/recreate/039_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Ti-dog-nic</div>
+            </div>
+
+        </div>
+
+        <h3 class="subsection-title">Other Classic Films</h3>
+        <div class="video-grid three-col">
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/others/et/084_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">E.T. the Extra-Terrestrial</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/others/blade_runner_2049/076.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Blade Runner 2049</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/others/blade_runner_2049/139_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Blade Runner 2049</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/spiderman/recreate/264_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">Spider-Man: Beyond the Spider-Verse</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/classic/others/shining/070_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">The Shining</div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- Character Consistency Section -->
+    <section class="section" id="emerging-capability">
+        <h2 class="section-title">Advanced Capability</h2>
+        <h3 class="subsection-title">Persistent Memory</h3>
+        <p class="section-subtitle">
+            HoloCine exhibits surprising emergent memory, not merely learning
+            superficial visual transitions but building an implicit and persistent representation of scenes and
+            objects.
+        </p>
+        <h4 class="subsubsection-title">Detail Memory</h4>
+
+        <div class="emerging-capability-row">
+            <div class="emerging-capability-video">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/memory/detail memory/002_seed0.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] An autumn trail in a national park. [character1] is a
+                        young
+                        hiker taking a break. Her well-worn backpack has a distinctive embroidered patch of a mountain
+                        range
+                        on it. This scene contains 4 shots. [per shot caption] Medium shot of [character1] sitting on a
+                        log,
+                        drinking water. Her backpack is on the ground beside her, the mountain patch visible. [shot cut]
+                        Close-up of her face, catching her breath. [shot cut] She reaches down and adjusts a strap on
+                        her
+                        backpack. [shot cut] A close-up shot of the backpack as her hand touches it, showing the texture
+                        and
+                        consistent design of the embroidered mountain patch.
+                    </div>
+                </div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/detail memory/detail_memory_01_01.png" alt="Detail memory frame 0">
+                </div>
+                <div class="image-desc">first frame</div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/detail memory/detail_memory_01_02.png" alt="Detail memory frame 1">
+                </div>
+                <div class="image-desc">last frame</div>
+            </div>
+        </div>
+
+        <div class="emerging-capability-row">
+            <div class="emerging-capability-video">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/memory/detail memory/0205_seed0.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] The scene takes place in a home kitchen. The main characters include [character1], a woman with curly dark hair tied with a yellow patterned bandana, wearing a dark blue top with button details; [character2], a young girl with dark hair styled in two braided buns, wearing a green, pink, and white striped knitted sweater; and [character3], a young boy with short dark hair, wearing an olive green long-sleeved shirt. There are 4 shots in this video. [per shot caption] Medium close-up of [character1] looking down, speaking softly. [shot cut] Medium close-up of [character2] looking down, her mouth slightly open as if speaking or reacting. [shot cut] Medium close-up of [character1] looking down and speaking, then briefly glancing up and to the side with a slight smirk before returning her gaze downwards. [shot cut] Medium wide shot showing [character2] peeling carrots, [character3] also peeling carrots, and [character1] chopping vegetables at a kitchen counter.</div>
+                </div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/detail memory/detail_memory_02_01.png" alt="Detail memory frame 1">
+                </div>
+                <div class="image-desc">first frame</div>
+            </div>
+
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/detail memory/detail_memory_02_02.png" alt="Detail memory frame 2">
+                </div>
+                <div class="image-desc">last frame</div>
+            </div>
+        </div>
+
+        <h4 class="subsubsection-title">Long-Range Reappearance</h4>
+        <div class="emerging-capability-row">
+            <div class="emerging-capability-video">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/memory/long range reappearance/00_seed0 (1).mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] An old male librarian with a grey tweed jacket and horn-rimmed glasses is working in a majestic, quiet library.[per shot caption] Medium shot of the old librarian stamping a book at his oak desk. He has a kind, focused expression. [shot cut] Close-up on an ancient, leather-bound book being placed on a shelf. [shot cut] A wide, slow pan across the towering shelves of the library, sunlight filtering through the high windows. [shot cut] Close-up of a large, ornate grandfather clock, its pendulum swinging steadily. [shot cut] Medium shot of the same old librarian at his desk, looking up and smiling gently at the camera</div>
+                </div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/long range reappearance/long_range_01_01.png" alt="Long range frame 0">
+                </div>
+                <div class="image-desc">first frame</div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/long range reappearance/long_range_01_02.png" alt="Long range frame 1">
+                </div>
+                <div class="image-desc">last frame</div>
+            </div>
+        </div>
+                <div class="emerging-capability-row">
+            <div class="emerging-capability-video">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/memory/long range reappearance/017_seed0.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] A bright, cluttered artist's studio. [character1], an
+                    artist, stands before a large, half-finished canvas on an easel. Jars of paint and brushes are
+                    scattered on a nearby table. This scene contains 4 shots. [per shot caption] Medium shot of
+                    [character1] studying the canvas with a critical eye. [shot cut] Close-up of the intricate
+                    details
+                    on the canvas she is working on. [shot cut] Close-up of her face, a mix of frustration and
+                    inspiration. [shot cut] A return to the initial medium shot, but now from a lower angle. The
+                    canvas,
+                    paints, and the artist's pose are consistent with the first shot.</div>
+                </div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/long range reappearance/long_range_02_01.png" alt="Long range frame 0">
+                </div>
+                <div class="image-desc">first frame</div>
+            </div>
+            <div class="emerging-capability-image-wrapper">
+                <div class="emerging-capability-image">
+                    <img src="cases/memory/long range reappearance/long_range_02_02.png" alt="Long range frame 1">
+                </div>
+                <div class="image-desc">last frame</div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title">Camera</h3>
+        <p class="section-subtitle">
+            HoloCine has a nuanced understanding of filmmaking techniques, exhibiting high
+            fidelity in interpreting and executing standard cinematographic commands.
+        </p>
+
+        <h4 class="subsubsection-title">Shot-Reverse-Shot</h4>
+        <div class="video-grid three-col">
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/shot_reverse_shot/0590_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A young woman [character1] with blonde hair and bangs, wearing a blue jacket, and a young man [character2] with messy brown hair, wearing a brown jacket over a dark hoodie, are sitting on stadium bleachers overlooking a vibrant green football practice field. There are numerous football players practicing on the field, and a city skyline is visible in the distance under a bright sky. This scene contains 4 shots. [per shot caption] Wide shot of [character1] and [character2] sitting on the bleachers, with a football practice happening on the field below them, as [character1] looks at an object in her hand. [shot cut] Close-up shot of [character1]'s face, intently examining a spider inside a small glass vial held in her gloved hand. [shot cut] Medium shot of [character1] and [character2], with [character2] looking at [character1] and smiling softly while she continues to focus on the vial. [shot cut] Close-up shot of [character2] looking from [character1] down, then back up at her with a gentle smile.
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/shot_reverse_shot/0066_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] Two men converse in a warmly lit, elegant living room featuring a large window, a decorative lamp, and a tapestry. [character1] has dark, swept-back hair and wears a white and dark-checkered button-up shirt and dark pants, holding a glass. [character2] has short, dark hair and wears a dark blue long-sleeve top over a collared white shirt, and dark pants, holding a phone. This scene contains 4 shots. [per shot caption] Medium close-up of [character1] speaking, looking off-camera with a pensive expression. [shot cut] Medium shot showing [character1] (back to camera) and [character2] facing him, [character1] gestures while speaking, then takes a sip from his glass. [shot cut] Medium close-up of [character1] speaking animatedly, gesturing with both hands while holding his glass. [shot cut] Medium shot of [character1] continuing to speak and gesture, taking a step, as [character2] listens attentively.</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted>
+                        <source src="cases/shot_reverse_shot/0266_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] Two characters, a man [character1] with short brown hair and light stubble wearing a dark jacket, and a woman [character2] with long wavy blonde hair and a dark top, are having an intimate conversation outdoors by a body of water, possibly a canal or river, with an embankment in the background. There are 5 shots in total. [per shot caption] Close-up shot of [character2] looking at [character1], smiling and her hair blowing in the breeze. [shot cut] Close-up shot of [character1] looking down then up at [character2] with a warm smile. [shot cut] Close-up shot of [character2] smiling at [character1], then looking down and back up thoughtfully, her hair blowing. [shot cut] Close-up shot of [character1] speaking earnestly to [character2]. [shot cut] Close-up shot of [character2] listening intently and reacting with a thoughtful expression, her hair blowing gently.</div>
+            </div>
+        </div>
+
+        <h4 class="subsubsection-title">Camera Control</h4>
+        <div class="video-grid three-col">
+            <div class="video-item-wrapper">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/camera_control/scale/080_seed0.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] The scene is a moody, rain-slicked city street at night. A lone saxophonist, [character1], plays a soulful melody under a street light. This scene contains 6 shots. [per shot caption] Medium shot of [character1] playing the saxophone, rain drizzling down. [shot cut] Close-up of their fingers moving expertly over the saxophone keys. [shot cut] Close-up of the rain drops hitting the shiny brass instrument. [shot cut] Medium close-up of their face, eyes closed, lost in the music. [shot cut] A low-angle shot looking up at the musician against the dark, rainy sky. [shot cut] Wide shot of the empty street, with the lonely sound of the saxophone filling the night.
+                    </div>
+                </div>
+                <div class="video-desc">Camera Scale</div>
+            </div>
+            <div class="video-item-wrapper">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/camera_control/angle/08_seed0.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] A powerful CEO with slicked-back black hair and a charcoal grey suit is sitting at a large glass desk in a modern skyscraper office, speaking directly to the camera.[per shot caption] Low-angle shot looking up at the CEO from across the desk, emphasizing their power and dominance. [shot cut] Eye-level shot of the CEO, creating a direct and equal connection with the viewer. [shot cut] High-angle shot looking down at the CEO at their desk, making them appear more contemplative and isolated within the large office space.</div>
+                </div>
+                <div class="video-desc">Camera Angle</div>
+            </div>
+            <div class="video-item-wrapper">
+                <div class="video-item">
+                    <div class="video-container">
+                        <video controls loop muted>
+                            <source src="cases/camera_control/movement/084_seed0.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-caption">[global caption] The scene features a lone explorer, [character1], discovering a hidden waterfall in a dense, green jungle. This scene contains 2 shots demonstrating camera movement. [per shot caption] The shot starts as a close-up on [character1]'s face, showing their tired but determined expression. The camera then slowly dollies out, revealing they are standing at the entrance to a cave. [shot cut] Starting from a medium shot of [character1] from behind, the camera slowly pans left, moving past them to reveal a spectacular hidden waterfall and a lush lagoon inside the cave.</div>
+                </div>
+                <div class="video-desc">Camera Movement</div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title">Minute-level Generation</h3>
+
+        <p class="section-subtitle">
+            From seconds to minutes. HoloCine's efficient architecture breaks the time barrier of previous models, enabling the generation of coherent, minute-scale cinematic narratives.
+</p>
+<div class="video-grid three-col">
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/003_seed0_2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features one main character: [character1], a female artist with paint-splattered clothes and intense, focused eyes. She is in a spacious, light-filled art studio, standing before a large, nearly finished abstract canvas. This scene contains 10 shots. [per shot caption] Medium shot of [character1] studying her large canvas, a paintbrush in hand. [shot cut] Close-up of her palette, a vibrant mix of oil colors. [shot cut] Close-up of her hand confidently mixing a deep blue hue. [shot cut] Medium close-up of her face in deep concentration, brow furrowed. [shot cut] She takes a deep breath and approaches the canvas. [shot cut] Close-up of the paintbrush making a decisive, slow stroke on the canvas. [shot cut] Extreme close-up on the texture of the paint as it is applied. [shot cut] Medium shot as she steps back, her whole body language showing evaluation of her work. [shot cut] Close-up of her eyes, which soften as a slow smile of satisfaction appears. [shot cut] A final wide shot of the artist and her completed masterpiece in the quiet studio.
+
+        </div>
+    </div>
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/021_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features a lone hiker, [character1], reaching the summit of a mountain at sunrise. [character1] is wearing hiking gear and has a backpack. The view is spectacular, with clouds below and the sun casting a golden glow. This scene contains 5 shots. [per shot caption] Medium shot of [character1] taking the last step onto the summit, looking tired but triumphant. [shot cut] Wide shot showing the incredible panoramic view from the mountain top. [shot cut] Close-up of [character1]'s face, filled with awe and wonder as they survey the landscape. [shot cut] [character1] slowly removes their backpack and sits down on a rock. [shot cut] Medium shot from behind, showing [character1] peacefully watching the beautiful sunrise.</div>
+    </div>
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/028_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features two main characters: [character1] is a serious-looking scientist with glasses and a white lab coat; [character2] is a small, curious child with a shock of bright orange hair, wearing pajamas. The environments include a futuristic, clean laboratory with intricate glowing equipment and a simple, cozy bedroom with starlight visible through a window. This scene contains 5 shots. [per shot caption] Medium close-up of [character1] meticulously adjusting a complex device, focused and slightly stressed. [shot cut] Close-up of [character2]'s wide-eyed wonder as they observe the laboratory through a small window. [shot cut] Medium shot of [character1] sighing and running a hand through their hair, taking a break. [shot cut] Close-up of [character2] giggling and pointing at a blinking light on the device. [shot cut] Medium close-up of [character1]'s serious face breaking into a rare, gentle smile as they look at [character2].</div>
+    </div>
+
+
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/015_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene shows two characters in a high-fantasy throne room. [character1] is a young queen with an elaborate crown and regal attire, looking burdened. [character2] is her loyal, aging advisor with a long grey beard, standing beside her. This scene contains 7 shots. [per shot caption] Medium shot of [character1] on the throne, looking down at a map spread on a table. [shot cut] Close-up of her face, showing the weight of her decisions. [shot cut] Medium shot as [character2] places a reassuring hand on her shoulder. [shot cut] [character1] looks up at him, her expression softening. [shot cut] Close-up of [character2]'s wise and kind eyes as he speaks. [shot cut] Medium shot of [character1] listening intently, then nodding with renewed resolve. [shot cut] She stands up, her posture now confident and commanding.</div>
+    </div>
+
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/029_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features two main characters: [character1] is a young, determined explorer with tanned skin and a practical ponytail, wearing rugged outdoor gear; [character2] is a wise-looking old tribal leader with deep wrinkles and a feathered headdress. The environments include a dense, fog-shrouded jungle ruin with ancient stone carvings and a warm, glowing campfire under a starry sky. This scene contains 13 shots. [per shot caption] Close-up of [character1]'s compass spinning wildly, a look of confusion. [shot cut] Medium shot of [character1] pushing through thick vines in the jungle ruin. [shot cut] Close-up of an intricate carving on a stone wall. [shot cut] Medium close-up of [character2] watching [character1] from the shadows, a knowing expression. [shot cut] Close-up of [character1] wiping sweat from her brow, determined. [shot cut] Split focus medium shot of [character1] discovering a hidden path on the left and [character2] nodding slightly in approval on the right. [shot cut] Close-up of a feather from [character2]'s headdress dropping to the ground. [shot cut] Medium close-up of [character1] finding the feather and looking around cautiously. [shot cut] Medium shot of [character2] now standing by the campfire, beckoning [character1]. [shot cut] Close-up of [character1]'s expression of awe and relief. [shot cut] Split focus close-up of [character1] looking grateful and [character2] looking patient. [shot cut] Medium shot of the two sitting by the fire, sharing a drink. [shot cut] Close-up on the flickering campfire light.</div>
+    </div>
+    
+
+
+
+
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/001_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features one main character: [character1], a young female botanist with long braided hair, wearing practical exploration gear. The environment is a surreal, bioluminescent forest at night, where plants and fungi emit a soft, ethereal blue and green light. This scene contains 10 shots. [per shot caption] Wide shot of the magical, glowing forest, with [character1] standing in the center. [shot cut] Medium shot of [character1] looking around in awe, her face illuminated by the glowing flora. [shot cut] Close-up of her hand gently touching a mushroom that brightens in response. [shot cut] Medium close-up of her fascinated expression as she observes the light. [shot cut] She kneels down. Medium shot of her taking out a sketchbook. [shot cut] Close-up of her hand sketching the intricate patterns of a glowing flower. [shot cut] A shot from behind her, looking over her shoulder at the detailed drawing. [shot cut] Close-up of her face, a soft smile of discovery and wonder. [shot cut] She looks up from her book. Medium shot of a glowing, moth-like creature fluttering past her. [shot cut] Wide shot of [character1] sitting peacefully in the heart of the glowing forest, now part of the scene.
+        </div>
+    </div>
+
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/007_seed0_2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features a tense interaction between two characters: [character1], a stoic detective in a trench coat, with a weary but sharp gaze, and [character2], a nervous informant with shifty eyes. The setting is a shadowy, rain-slicked alley at night, lit by a single flickering neon sign. This scene contains 12 shots. [per shot caption] Medium shot of the two men standing apart in the alley. [shot cut] Close-up on [character2]'s anxious face, rain dripping from his hair. [shot cut] Close-up of [character1]'s impassive face, watching [character2] intently. [shot cut] Medium shot as [character2] nervously glances around. [shot cut] Close-up of [character2]'s hand reaching into his pocket and pulling out a small USB drive. [shot cut] Extreme close-up of the USB drive being placed into [character1]'s open palm. [shot cut] Close-up of [character1]'s fingers closing around the drive. [shot cut] Medium close-up of [character1] giving a slight, confirming nod. [shot cut] Close-up of [character2]'s relieved, yet still fearful, expression. [shot cut] Medium shot as [character1] turns his back to leave. [shot cut] [character2] watches him go, then melts back into the shadows. [shot cut] Final shot of [character1] walking out of the alley and into the rainy city street.
+        </div>
+    </div>
+
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/013_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] The scene features one character, [character1], a young woman with long black hair, sitting on her bed and looking at an old photograph. Her room is cozy and decorated with fairy lights. This scene contains 5 shots. [per shot caption] Medium shot of [character1] holding a faded photograph in her hands. [shot cut] Close-up on the photograph, showing a happy family. [shot cut] Close-up of [character1]'s face, a nostalgic and slightly sad smile on her lips. [shot cut] She gently traces a figure in the photo with her fingertip. [shot cut] Medium shot as she hugs the photograph to her chest, closing her eyes.
+
+        </div>
+    </div>
+
+    <div class="video-item">
+        <div class="video-container">
+            <video controls loop muted preload="none" loading="lazy">
+                <source src="cases/1min/038_seed0.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-caption">[global caption] [character1] is a woman with dark hair, wearing an elaborate dark historical gown and a headpiece. [character2] is a man with dark hair, wearing a black cap and a fur-collared robe. They are in a richly decorated, historical room with patterned walls and large windows. (10 shots) [per shot caption] Wide shot showing [character1] and [character2] seated across from each other in an ornate room, [character1] looking towards [character2]. [shot cut] Close-up of [character1]'s face as she looks upwards and clasps her hands, a pained expression. [shot cut] Medium shot of [character1] looking upwards, then meeting [character2]'s gaze with a slight, knowing smile. [shot cut] Medium shot of [character2] listening intently, hands clasped, an unreadable expression. [shot cut] Medium shot of [character1] speaking, her initial smile fading to a more serious look. [shot cut] Medium shot of [character2] listening, his expression grim and thoughtful. [shot cut] Close-up of [character1] speaking with intensity and a serious demeanor. [shot cut] Close-up of [character2] listening carefully, his eyes focused. [shot cut] Close-up of [character1] speaking directly to [character2], her expression resolute. [shot cut] Close-up of [character2] observing [character1], his face revealing a deep contemplation.
+
+        </div>
+    </div>
+
+
+</div>
+
+    </section>
+
+    <div class="ornament">✦ ✦ ✦</div>
+
+    <!-- Diverse Results Section -->
+    <section class="section" id="gallery">
+        <h2 class="section-title">Diverse Results</h2>
+        <p class="section-subtitle">
+            HoloCine has high versatility across different settings,
+            genres, and narrative structures.
+        </p>
+        <div class="video-grid three-col">
+
+
+ 
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/036_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene takes place in the cockpit of a vintage fighter plane during a dogfight. [character1] is a young, determined female pilot with her hair tucked into a flight cap, wearing goggles. The environment is a cramped cockpit filled with analogue dials and gauges, with the blue sky and enemy planes visible through the canopy. This scene contains 4 shots. [per shot caption] Close-up of [character1]'s determined face, reflected in a vibrating rear-view mirror. [shot cut] A point-of-view shot showing an enemy plane in her sights. [shot cut] Close-up of her gloved hand gripping the control stick and pushing the firing button. [shot cut] Medium shot of her face as she banks the plane hard, a triumphant smile appearing as she evades an attack.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/071_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features two main characters: [character1] is an elderly man with a kind face and a flat cap, sitting on a park bench; [character2] is his wife, an elderly woman with soft white hair and a warm smile, sitting beside him. The environment is a peaceful park in autumn, with golden leaves on the ground and a gentle afternoon light. This scene contains 6 shots. [per shot caption] Medium shot of the couple sitting on the bench, [character2] feeding pigeons from a small paper bag. [shot cut] Close-up of [character1]'s face, watching his wife with a look of deep, enduring love. [shot cut] Close-up of their wrinkled hands, resting together on the bench, his hand gently patting hers. [shot cut] Medium close-up of [character2] turning to [character1] and sharing a quiet, knowing smile. [shot cut] A shot from their point of view, looking at the pigeons fluttering on the ground before them. [shot cut] A slightly wider medium shot of the couple, a perfect picture of lifelong companionship, as a gentle breeze rustles the autumn leaves around them.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part3/001_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene captures a heartfelt reunion on a windswept cliffside overlooking a stormy sea. [character1] is a weathered sailor with a graying beard and kind eyes, wearing a heavy wool sweater. [character2] is a woman with her hair blowing in the wind, wearing a simple, rustic dress, her face etched with years of waiting. The environment is dramatic and moody, with crashing waves, gray skies, and soaring seagulls. This scene contains 4 shots. [per shot caption] Medium shot of [character2] standing at the edge of the cliff, looking out at the sea, her expression filled with longing. [shot cut] Close-up of her face as she hears a sound and turns, her eyes widening in disbelief. [shot cut] Over-the-shoulder shot from behind [character2], revealing [character1] standing a few paces away, a tired but loving smile on his face. [shot cut] A powerful close-up of [character2]'s face as tears of joy stream down her cheeks before she moves towards him.
+                </div>
+            </div>
+
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/0003_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features two main characters: [character1], a woman with light brown hair tied in a ponytail, wearing a pink striped tank top; and [character2], a young girl with short brown hair, wearing a white long-sleeve shirt with colorful patterns. They are in a dimly lit, confined room, possibly a bedroom, with a wall adorned with children's drawings and a patterned pillow. This scene contains 6 shots. [per shot caption] Medium shot of [character1] and [character2] sitting, with [character2] speaking and [character1] listening and then smiling at her. [shot cut] Close-up shot of [character2] holding a remote control and intently watching something off-screen. [shot cut] Close-up shot of a television screen displaying a colorful animated cartoon. [shot cut] Close-up shot of [character2]'s face, reacting to the cartoon with an open mouth. [shot cut] Medium shot of [character1] and [character2] sitting, with [character1] looking forward and then down with a somber expression. [shot cut] Close-up shot of [character1]'s face, looking around with a tired expression and then closing her eyes.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part3/000_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features two main characters in a neo-noir, rain-slicked cyberpunk city at night. [character1] is a grizzled detective with a cybernetic eye, wearing a worn trench coat. [character2] is a mysterious informant with neon-streaked hair and glowing tattoos on her neck, wearing a sleek, dark jumpsuit. The environment is a dimly lit alley, illuminated by flickering holographic ads and the constant drizzle reflecting off the pavement. This scene contains 5 shots. [per shot caption] Medium shot of [character1] leaning against a graffiti-covered wall, his face half in shadow, looking weary as rain drips from his hat. [shot cut] Medium close-up shot of [character2]'s face, her expression unreadable, as the neon light from a nearby sign casts a blue glow on her skin. [shot cut] Over-the-shoulder shot from behind [character1], showing [character2] speaking, her lips moving silently. [shot cut] Extreme close-up on [character1]'s cybernetic eye, which glows red as it analyzes [character2]. [shot cut] Medium shot of [character2] turning and walking away, disappearing into the misty, neon-lit alley.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/100_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a single main character: [character1] is a desert nomad, their face wrapped in cloth to protect from the sun and sand, their eyes are wise and weathered. The environment is a vast sand dune desert under a blazing sun. The heat haze distorts the horizon. This scene contains 6 shots. [per shot caption] A stunning extreme wide shot of the endless sea of sand dunes, with [character1] as a solitary figure walking. [shot cut] Close-up of their leather-bound feet sinking slightly into the fine sand with each step. [shot cut] Medium shot of them stopping and shielding their eyes, scanning the horizon. [shot cut] Close-up of their weathered eyes, which show a deep understanding of this harsh environment. [shot cut] A point-of-view shot of the shimmering heat haze on the horizon, where the faint outline of a distant oasis can just be seen. [shot cut] Medium shot of [character1] adjusting the cloth on their face and continuing their determined, steady walk towards the faint hope of water and shade.
+                </div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part3/007_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A science fiction scene on a visually stunning, undiscovered alien planet. [character1] is a lone astronaut in a sleek, white-and-orange spacesuit, their face visible through a clear helmet, showing a sense of wonder. The environment is a forest of glowing, crystalline trees under a purple sky with two suns. The air is filled with sparkling, floating spores. This scene contains 5 shots. [per shot caption] Wide shot of [character1] walking cautiously through the glowing crystal forest, their boots making soft crunching sounds on the crystalline ground. [shot cut] Medium shot as [character1] stops and kneels, reaching out a gloved hand towards a pulsating, bioluminescent plant on the ground. [shot cut] Close-up on [character1]'s face inside the helmet, their eyes wide with awe and fascination. [shot cut] A shot from [character1]'s point of view, showing their gloved fingers gently touching the plant, causing it to emit a soft, harmonious chime and a brighter pulse of light. [shot cut] A final wide shot showing the light from the touched plant spreading in a chain reaction, causing the entire crystal forest to light up brilliantly around the lone astronaut.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/003_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a tense confrontation in a dusty, sun-bleached Western town. [character1] is a weathered outlaw with a thick mustache and a scar across his cheek, wearing a leather duster. [character2] is a young, determined sheriff with a clean-shaven face and a silver star on his vest. The environment is the middle of a deserted main street at high noon, with wooden storefronts and a saloon in the background. This scene contains 6 shots. [per shot caption] Medium shot of [character1], his hand hovering near the pistol at his hip, a smirk on his face. [shot cut] Close-up of [character2]'s eyes, narrowed and focused, sweat beading on his temple. [shot cut] Extreme close-up of [character1]'s fingers twitching over the handle of his gun. [shot cut] Extreme close-up of the sheriff's silver star, glinting in the harsh sunlight. [shot cut] Medium shot of [character2] slowly raising his hands in a placating gesture, not breaking eye contact. [shot cut] Close-up of [character1]'s smirk faltering, replaced by a look of confusion.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/0188_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] [character1] is a young man with light brown hair, dressed in a dirty, blood-stained military uniform, his face covered in dirt and blood. [character2] is a person whose dirty, blood-stained hands, wearing a silver ring, are visible. The environment is a desolate, war-torn battlefield under an overcast sky, with dark, rocky ground, debris, dead trees, and distant explosions. This scene contains 5 shots. [per shot caption] Close-up shot of [character1]'s dirty, bloodied face lying on the ground, as [character2]'s hands gently close [character1]'s open eyes. [shot cut] Wide shot of the devastated battlefield showing a lone soldier in the middle ground, with large explosions and thick black smoke filling the background. [shot cut] Medium close-up of [character1]'s bloodied and dirt-streaked face, showing an expression of profound sadness and distress. [shot cut] Medium shot from behind [character1]'s shoulder, as he looks out at distant fires and smoke on the battlefield. [shot cut] Medium close-up of [character1]'s face, still covered in dirt and blood, looking around with a pained and despairing expression.</div>
+            </div>
+            
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/video_rank5_sample29_seed0_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A tense courtroom scene. [character1], a defense lawyer, is cross-examining [character2], a witness on the stand. 5 shots. [per shot caption] Medium shot of [character1] pacing in front of the witness stand. [shot cut] Close-up of [character2] looking nervous and avoiding eye contact. [shot cut] [character1] stops and points an accusatory finger. [shot cut] A shot of the jury, all leaning forward in anticipation. [shot cut] Close-up on [character2]'s face as they finally break, their expression crumbling. </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/11_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A giant, ancient golem made of moss and stone, [character1], lies dormant in a field. A small child, [character2], climbs it, believing it to be a hill. This scene contains 5 shots. [per shot caption] Wide shot of the massive, sleeping golem under a cloudy sky. [shot cut] Medium shot of the child playfully climbing the golem's arm. [shot cut] The child finds a patch of glowing flowers growing on the golem's chest and touches them. [shot cut] Close-up of the golem's massive stone eye slowly opening, its iris a soft, glowing light. [shot cut] The child looks at the opening eye not with fear, but with pure, innocent curiosity.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/022_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a warm, domestic moment in a sunlit kitchen. [character1] is a grandmother with laugh lines around her eyes and flour on her apron, showing a child how to bake. [character2] is a small child with bright, curious eyes, standing on a stool to reach the counter. The environment is cozy and inviting, with ingredients laid out on a wooden countertop and the scent of baking in the air. This scene contains 6 shots. [per shot caption] Close-up of [character1]'s wrinkled, gentle hands guiding [character2]'s small hands to knead dough. [shot cut] Medium shot of [character2]'s face, tongue sticking out in concentration. [shot cut] Medium shot of [character1] laughing warmly at the child's serious expression. [shot cut] Close-up of [character2] playfully patting the dough, sending a small puff of flour into the air. [shot cut] Medium shot as [character1] playfully dabs a spot of flour on the child's nose. [shot cut] Close-up of [character2] giggling, their face a mixture of flour and pure joy.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/024_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is set in a decadent, candle-lit vampire's lair, adorned with velvet curtains and antique furniture. [character1] is an ancient vampire with pale skin, sharp features, and hypnotic eyes, wearing aristocratic attire from a bygone era. [character2] is their human guest, a young woman with a defiant expression, wearing a simple modern dress that contrasts with the surroundings. This scene contains 6 shots. [per shot caption] Medium shot of [character1] sitting in a high-backed chair, swirling a glass of deep red liquid. [shot cut] Close-up of [character2] standing, her arms crossed, trying to appear brave. [shot cut] Medium shot as [character1] looks up at her, a predatory yet charming smile playing on their lips. [shot cut] Close-up of [character1]'s eyes, which seem to glow faintly in the candlelight. [shot cut] Medium shot of [character2] taking an involuntary step back, her defiance wavering. [shot cut] Close-up of [character1] slowly rising from the chair, their movements unnaturally fluid and silent.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/27_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a sun-drenched glasshouse, an android, [character1], is taught how to laugh by a young girl, [character2]. This scene contains 5 shots. [per shot caption] Medium shot of the girl telling a joke to the android, then bursting into laughter. [shot cut] Close-up of the android's face, analyzing the sound and expression of the girl's laugh, its head tilting. [shot cut] The android attempts to replicate the sound, resulting in a strange, mechanical, but curious noise. [shot cut] The girl finds this even funnier and laughs harder. [shot cut] A slow push-in on the android's face as its mechanical laugh softens, becoming a more genuine, warm imitation as it watches the girl's joy.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/028_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a quiet farewell at a misty train station in the 1940s. [character1] is a young soldier in uniform, his face brave but with sad eyes. [character2] is his sweetheart, a young woman in a simple dress, clutching his hand. The environment is filled with steam from the train, and the soft glow of station lamps. This scene contains 6 shots. [per shot caption] Medium shot of the couple holding hands, saying their goodbyes. [shot cut] Close-up of [character2]'s face, tears welling in her eyes as she tries to smile. [shot cut] Close-up of [character1]'s face as he gently wipes a tear from her cheek. [shot cut] Close-up of their intertwined hands, his rough, hers delicate. [shot cut] Medium shot as he lets go of her hand and boards the steam-filled train. [shot cut] Close-up of [character2]'s face, watching the train pull away, her expression a mix of love and heartbreak.</div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/21_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a high-tech art gallery, [character1] watches as [character2], a robotic artist, creates a sculpture out of hard light. This scene contains 6 shots. [per shot caption] Wide shot of the gallery, filled with other light-sculptures. [shot cut] Medium shot of the robotic artist, its arms moving with impossible speed and precision. [shot cut] Close-up as beams of colored light are emitted from the robot's fingertips, solidifying into a physical form. [shot cut] The sculpture of a bird takes shape in mid-air. [shot cut] [character1] watches, their face a mixture of admiration and a hint of unease. [shot cut] The robot finishes, retracts its arms, and the now-solid bird of light floats gently in the air.</div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/44_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] [character1], an android in a simple tunic, tends to a rooftop garden in a futuristic megacity. This scene contains 5 shots. [per shot caption] Wide shot of the serene garden against a backdrop of towering skyscrapers. [shot cut] Medium shot of [character1] pruning a cybernetic plant with glowing leaves. [shot cut] Close-up of its metallic fingers delicately handling a flower. [shot cut] [character1] looks up as a flying vehicle speeds past in the background. [shot cut] It returns to its task, its expression placid and calm.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/0044_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] [character1] is an older man with dark, graying hair, wearing a military uniform adorned with medals. [character2] is a young man with curly brown hair and striking blue eyes. The scene takes place indoors, in what appears to be a formal room with a window in the background. This video contains 4 shots. [per shot caption] Medium close-up shot over [character2]'s shoulder of [character1] looking down, appearing distraught. [shot cut] Close-up shot of [character2]'s face, tears welling up and streaming down his cheeks. [shot cut] Medium close-up shot over [character2]'s shoulder of [character1] looking up, his eyes appearing moist. [shot cut] Close-up shot of [character2]'s face, still crying and looking emotional.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/06_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] Two powerful mages, [character1] and [character2], face each other in a mirror-duel on a perfectly still lake under a twilight sky. Every action is perfectly mirrored by their reflection. This scene contains 5 shots. [per shot caption] Symmetrical wide shot of the two mages standing on the water, their reflections flawless beneath them. [shot cut] Medium shot as [character1] raises a hand, weaving an intricate sigil of orange fire. [shot cut] An identical shot of [character2] performing the same action, but their sigil is made of blue ice. [shot cut] The camera pushes in between them as the fire and ice sigils meet, creating a massive cloud of steam. [shot cut] A final shot showing the steam clearing to reveal they are now standing back-to-back, having switched places.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/006_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a tense negotiation in a high-tech, minimalist boardroom overlooking a futuristic cityscape. [character1] is a sharp, powerful CEO in a perfectly tailored suit, with slicked-back hair and an impassive face. [character2] is a rebellious young hacker with brightly colored hair, a piercing, and a defiant posture, wearing a worn hoodie. The environment features a long, polished obsidian table and floor-to-ceiling windows. This scene contains 5 shots. [per shot caption] Medium shot of [character1] sitting at the head of the table, steepling their fingers and looking calmly at [character2]. [shot cut] Close-up of [character2] leaning back in their chair, arms crossed, returning the stare with a challenging smirk. [shot cut] Extreme close-up of a data chip being slid across the black table by [character1]. [shot cut] Close-up of [character2]'s eyes as they flicker down to the chip and then back up to [character1], their smirk gone. [shot cut] Medium shot of [character2] leaning forward, picking up the chip, their expression now serious and calculating.
+                </div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/030_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a discovery in a sunken, ancient city underwater. [character1] is a deep-sea diver in a high-tech scuba suit, their face visible through a clear helmet. The environment is eerie and beautiful, with sunlight filtering through the water, illuminating vine-covered ruins and schools of exotic fish. This scene contains 5 shots. [per shot caption] Wide shot of the diver, [character1], swimming through the majestic, silent ruins of the underwater city. [shot cut] Medium shot as they approach a large, sealed stone door covered in glowing runes. [shot cut] Close-up of their face inside the helmet, eyes wide with awe and curiosity. [shot cut] Close-up of their gloved hand reaching out and hesitantly touching one of the glowing runes on the door. [shot cut] A powerful shot as the rune they touch glows intensely brighter, and the massive stone door begins to grind open.</div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/63_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a dramatic, cinematic  style, two rival swordsmen, [character1] and [character2], face off in a bamboo forest during a light rain. This scene contains 5 shots. [per shot caption] Wide shot of the two figures standing silently amidst the tall bamboo stalks. [shot cut] Close-up of rain dripping from a bamboo leaf. [shot cut] A flash of steel as they simultaneously draw their katanas. [shot cut] A rapid, dynamic sequence of them clashing blades, their movements almost too fast to see, leaves are cut and fall around them. [shot cut] A final shot of them in a locked-blade standoff, glaring at each other, steam rising from their breath in the cool air.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/68_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a city where it perpetually rains, a 'rain-painter', [character1], uses a special umbrella to paint with the falling water, creating temporary, glowing art on the pavement for a small child, [character2]. This scene contains 6 shots. [per shot caption] Medium shot of the grey, rain-slicked street. [shot cut] The painter opens their umbrella, which glows with a soft, inner light. [shot cut] They angle the umbrella, and the water that runs off it now glows with color. [shot cut] Close-up as the glowing water hits the pavement, forming the image of a smiling sun. [shot cut] The child, who was looking sad, now points at the glowing art with a delighted gasp. [shot cut] A final shot of the painter creating more glowing images for the child, a small moment of beauty in the endless rain.</div>
+            </div>
+
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/78_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A battle chef, in a vibrant anime style, cooks a meal that creates a literal explosion of flavor. [character1] is the chef, [character2] is the taster. This scene contains 5 shots. [per shot caption] Medium shot of the chef putting the final, mysterious ingredient on the dish. [shot cut] The chef presents the dish, which has a faint, pulsating aura. [shot cut] Close-up of the taster taking a bite, their eyes closed. [shot cut] The taster's eyes snap open, and a stylized, anime-style explosion of stars and galaxies erupts in the background behind them. [shot cut] A final shot of the taster, a single tear of pure ecstasy rolling down their cheek, as they declare it delicious.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/79_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] Two silent guardians, [character1] and [character2], made of living crystal, stand vigil on a floating platform before a swirling nebula. This scene contains 5 shots. [per shot caption] Extreme wide shot of the nebula and the floating platform. [shot cut] Medium shot of the two crystalline guardians, light refracting through their bodies. [shot cut] A meteor streaks towards them. [shot cut] The guardians raise their hands in unison, creating a shimmering energy shield that effortlessly deflects the meteor. [shot cut] A final, serene shot of the guardians returning to their watchful pose as if nothing had happened.
+                </div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/70_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] [character1], an ice wizard, freezes a rose in a wintery landscape. This scene contains 5 shots. [per shot caption] Medium shot of the wizard holding a perfect red rose. [shot cut] He gently blows on the rose. [shot cut] Close-up as a layer of frost spreads across the petals. [shot cut] The entire rose becomes encased in clear, sparkling ice. [shot cut] He holds up the frozen rose, a beautiful and permanent creation.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/0462_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features 4 shots focusing on [character1], a man with long, dark, messy hair, a light beard, and a facial scar on his right cheek. He is dressed in a dark, poncho-like garment with fingerless gloves, and carries a backpack and a staff-like weapon. The environment is an overgrown, desolate industrial area with old red-brick buildings, abandoned vehicles, and graffiti-covered walls, suggesting a post-apocalyptic setting. [per shot caption] Close-up of [character1]'s face, initially pensive, slowly turning and looking up with a watchful expression. [shot cut] Close-up of a graffiti-covered wall featuring the text "POUVOIR DES VIVANTS". [shot cut] Medium shot from behind [character1] as he walks towards an overgrown red-brick industrial building. [shot cut] Medium shot of [character1] from the front, holding his staff, scanning the environment vigilantly.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/069_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features two main characters: [character1] is a young woman in a vintage-style floral dress, her face full of sad resignation; [character2] is a young man in a soldier's uniform from the 1940s, his expression equally somber. The environment is a bustling, steam-filled train station platform, with crowds of people and a large locomotive waiting. This scene contains 6 shots. [per shot caption] Medium shot of [character1] and [character2] facing each other, holding hands amidst the crowd. [shot cut] Close-up of their intertwined hands, his grip tight. [shot cut] Medium close-up of [character2]'s face as he says his goodbyes, his voice low. [shot cut] Medium close-up of [character1]'s face, a single tear rolling down her cheek as she tries to smile bravely. [shot cut] Over-the-shoulder shot from behind [character1], showing [character2] turning and walking towards the train without looking back. [shot cut] Close-up of [character1]'s face as she watches him go, her brave smile crumbling as the train's whistle blows</div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/021_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene takes place in a serene, isolated monastery high in snow-capped mountains. [character1] is a young monk with a shaved head and a peaceful demeanor, meditating. [character2] is an old, wise abbot with a long, thin beard, observing him. The environment is minimalist and tranquil, with prayer flags fluttering in the wind outside a large, open window framing the majestic mountain peaks. This scene contains 4 shots. [per shot caption] Medium shot of [character1] sitting cross-legged on a floor mat, eyes closed in deep meditation. [shot cut] Close-up of a single bead of sweat rolling down the young monk's temple, showing his intense focus. [shot cut] Medium shot of [character2] standing quietly in the doorway, watching with a gentle, approving expression. [shot cut] Close-up of [character1]'s face as his eyes slowly open, a look of profound calm and enlightenment within them.
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/80_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A 'lamp-lighter' monk, [character1], is guided by a child, [character2], through a city of sleeping stone giants to light the beacons on their heads. This scene contains 6 shots. [per shot caption] Wide shot of the city of giants under a starry sky. [shot cut] Medium shot of the monk and child at the foot of a giant. [shot cut] The child points to a hidden vine, showing the monk the way up. [shot cut] The monk climbs the giant and reaches the beacon on its head. [shot cut] Close-up as the monk lights the beacon, which bursts into a warm, gentle flame. [shot cut] A final shot from above, showing a trail of newly lit beacons across the city, as the monk and child head towards the next giant.
+                </div>
+            </div>
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/53_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a cinematic anime style, on a rain-drenched rooftop overlooking a futuristic, neon-tokyo city, [character1], a young man with a cybernetic arm and a rebellious attitude, confronts [character2], a stoic woman in a formal suit, holding a translucent energy umbrella. This scene contains 6 shots. [per shot caption] Wide shot of the city, with the two characters as silhouettes against the vibrant neon signs, rain pouring down. [shot cut] Medium shot of [character1], his cybernetic arm sparking slightly as he glares, rain dripping from his hair. [shot cut] Close-up of [character2]'s calm face, her eyes reflecting the city lights, completely unfazed by the rain under her energy umbrella. [shot cut] A dramatic low-angle shot as [character1] charges forward, his fist crackling with energy. [shot cut] Rack focus from [character2]'s unblinking eye to [character1]'s fist stopping just inches from the energy umbrella's shimmering shield. [shot cut] A final shot showing their faces in a tense stand-off, the rain and neon lights swirling around them.</div>
+            </div>
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/54_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a painterly, Ghibli-inspired anime style, [character1], a young girl with a straw hat, offers a piece of fruit to [character2], a gentle, moss-covered Forest Spirit, by the edge of a crystal-clear stream. The forest is bathed in soft, dappled sunlight. This scene contains 5 shots. [per shot caption] Wide shot of the lush, peaceful forest and the sparkling stream. [shot cut] Medium shot of the girl kneeling and extending her hand with the fruit towards the large, kind-eyed spirit. [shot cut] Close-up of the spirit's leafy hand slowly reaching out to accept the offering. [shot cut] As the spirit touches the fruit, the surrounding flowers begin to glow with a soft, warm light. [shot cut] A final shot of the girl smiling joyfully as the spirit gives a slow, gentle nod of thanks, the air filled with glowing pollen.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/046_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a confrontation between a nature spirit and a human in a primordial forest. [character1] is a being made of moss, leaves, and wood, with glowing eyes, the guardian of the forest. [character2] is a logger with a chainsaw and a hardened face, who has just felled a tree. The environment is ancient and green, with giant trees, thick undergrowth, and dappled sunlight. This scene contains 5 shots. [per shot caption] Medium shot of [character2] turning off his chainsaw, a look of satisfaction on his face next to a freshly cut stump. [shot cut] The forest falls unnaturally silent. A close-up of [character2]'s face, his smile faltering as he senses something is wrong. [shot cut] Medium shot as [character1], the forest spirit, rises from the earth and roots in front of him, its form taking shape. [shot cut] A dramatic low-angle shot of the towering, intimidating spirit. [shot cut] Close-up of [character2]'s face, now filled with pure, primal fear.</div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/00_seed0_create.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] In a surreal world under a golden hour sky, [character1], a young man with a futuristic trench coat, and [character2], a woman with long, flowing white hair and elegant robes, sit on the edge of a floating island. Below them is a sea of clouds and other floating landmasses with impossible architecture. This scene contains 5 shots. [per shot caption] Medium shot of [character1] and [character2] sitting side-by-side, their legs dangling over the edge, looking out at the horizon. [shot cut] Close-up shot of [character2]'s serene face, the warm light catching in her hair as a gentle wind blows. [shot cut] Over-the-shoulder shot from behind the two characters, showing their perspective of the vast, beautiful cloud sea below. [shot cut] A slow push-in shot focusing on their hands, resting closely but not touching on the grassy edge of the island. [shot cut] Dramatic pull-back shot, revealing the immense scale of the floating islands and the breathtaking beauty of the entire scene, with the two characters as small figures in a vast, dreamlike world.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/0748_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene depicts a somber outdoor funeral service on a grassy area, with a large, ornate stone building in the background. The main characters include [character1], a young man with blonde hair dressed in a black suit, who appears distraught; [character2], a man with short dark curly hair and a beard, wearing a dark suit; and [character3], an older woman with light curly hair wearing a black hat. There are also several other mourners and pallbearers in dark clothing, along with a figure in a white robe. This scene contains 5 shots. [per shot caption] Medium shot of a wooden casket being lowered with several pallbearers, as [character1] stands solemnly behind it. [shot cut] Medium close-up of [character2] looking forward with a serious expression, with [character3] partially visible beside him. [shot cut] Wide shot showing [character1] standing behind the casket while pallbearers and other mourners, including [character2] and [character3], surround it in the outdoor setting. [shot cut] Medium close-up of [character2] looking forward with a stoic expression. [shot cut] Close-up of [character1] as his hair blows in the wind, showing emotion as he wipes his eye with a handkerchief.</div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/076_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a single main character: [character1] is a weary soldier in muddy combat gear, his face smudged with dirt, showing exhaustion and sorrow in his eyes. The environment is a makeshift camp in a war-torn, desolate landscape, during a bleak, grey dawn. This scene contains 6 shots. [per shot caption] Close-up of [character1]'s trembling hands as he tries to light a cigarette. [shot cut] Medium shot of him leaning against a sandbag wall, finally getting the cigarette lit and taking a long, slow drag. [shot cut] Close-up of an old, creased photograph he pulls from his pocket, showing a smiling woman and child. [shot cut] Medium close-up of his face, his hard expression softening as he looks at the photo, a single tear tracing a path through the dirt on his cheek. [shot cut] Extreme close-up on his thumb gently stroking the face of the woman in the photograph. [shot cut] A wider medium shot of him sitting alone in the bleak surroundings, the small photograph his only source of warmth in the cold morning light.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/0715_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The main characters are: [character1], an older man wearing a grey fedora, dark suit, white shirt, and red tie; [character2], a younger man with a mustache, wearing a dark suit, dark blue shirt, and dark blue patterned tie; [character3], a middle-aged man with receding dark hair, wearing a light blue sweater vest over a pink shirt and tie; and [character4], a young woman with curly brown hair, wearing a light-colored polka dot shirt. The environment is an outdoor backyard setting with lush greenery and a red-painted shed-like structure. There are 4 shots in this video. [per shot caption] Medium shot of [character1] and [character2] standing side by side, with [character1] looking forward and [character2] looking down, then speaking. [shot cut] Close-up shot of [character3]'s face, with his eyes closed or looking downwards, appearing thoughtful or sad. [shot cut] Medium shot of [character1] speaking while [character2] stands beside him looking down, with a hint of another person in the foreground. [shot cut] Close-up shot of [character4]'s face, looking attentively off-screen with a concerned expression.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/000_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features one main character: [character1], a contemplative android with luminous blue eyes and chrome accents on his face, wearing a sleek, dark high-collar jacket. The environment is his minimalist, high-tech apartment with a large window overlooking a rainy, neon-lit cyberpunk cityscape. This scene contains 5 shots. [per shot caption] Medium close-up of [character1] looking out the window, raindrops streaking down the glass, reflecting the city's neon signs on his face. [shot cut] Extreme close-up on [character1]'s blue, glowing eye, a tiny reflection of the city visible within. [shot cut] Medium shot of [character1] slowly turning his head away from the window towards the camera, his expression unreadable. [shot cut] Close-up of [character1]'s hand, fingers gently tapping on a cold, metallic tabletop. [shot cut] Medium shot from behind [character1] as he stands motionless, gazing out at the vast, vibrant and rainy city below.</div>
+            </div>
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/006_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a lone character: [character1], a young woman with windswept auburn hair, wearing a heavy, warm coat. The environment is a dramatic, rocky cliffside overlooking a turbulent ocean at sunrise. The sky is filled with hues of orange, pink, and purple. This scene contains 5 shots. [per shot caption] Wide shot of the majestic sunrise over the ocean, with [character1] as a small silhouette standing on the edge of the cliff, emphasizing the grandeur of nature. [shot cut] Medium shot of [character1] from the side as she looks out at the horizon, the wind gently blowing her hair. [shot cut] Close-up of [character1]'s face, her eyes filled with awe and a hint of melancholy, the warm light of the sunrise illuminating her features. [shot cut] Close-up of her hand gripping a small, weathered stone. [shot cut] Medium shot of [character1] turning her head slightly and closing her eyes, taking a deep breath of the sea air.
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/030_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features one character: [character1], a master watchmaker, an old man with focused eyes, magnified by a loupe, and steady, wrinkled hands. He is wearing a simple leather apron. The environment is a quiet, cluttered workshop filled with intricate tools, gears, and clocks. The scene is lit by a warm, focused lamp. This scene contains 6 shots. [per shot caption] Extreme close-up of the intricate, moving gears of a pocket watch. [shot cut] Medium shot of [character1] hunched over his workbench, concentrating intently. [shot cut] Extreme close-up of the tip of a tweezer, held by [character1]'s steady hand, placing a minuscule ruby gear into the watch mechanism. [shot cut] Close-up of [character1]'s eye, magnified by the loupe, showing intense focus. [shot cut] Medium close-up as he gently closes the watch's back casing with a soft click. [shot cut] Close-up of [character1]'s face as he removes the loupe and looks at the finished watch with a subtle smile of satisfaction.
+
+                </div>
+            </div>
+
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/022_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a scientist, [character1], with safety goggles and a white lab coat, observing a specimen. The environment is a modern, clean laboratory with microscopes, beakers, and advanced equipment. This scene contains 5 shots. [per shot caption] Medium shot of [character1] leaning over a powerful microscope, adjusting the focus knob. [shot cut] Close-up of her eye looking into the eyepiece of the microscope. [shot cut] A stylized shot representing what she sees: a beautiful, abstract view of glowing cells dividing slowly. [shot cut] Medium close-up of her face as she pulls back from the microscope with a look of discovery and excitement. [shot cut] Close-up of her hand quickly grabbing a pen and starting to write notes in a lab journal.
+                </div>
+            </div>
+
+   
+
+
+
+
+       
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/036_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a noir detective, [character1], with a classic trench coat and fedora, casting a long shadow. The environment is a fog-filled city alley at night, lit by a single flickering streetlamp. This scene contains 4 shots. [per shot caption] Medium shot of [character1] lighting a cigarette, the flare of the match briefly illuminating his weary face. [shot cut] Close-up of his face, half in shadow, as he takes a slow drag from the cigarette, smoke curling from his lips. [shot cut] Low-angle medium shot as he looks up towards a window in a nearby building. [shot cut] Wide shot of the empty, foggy alley as [character1] begins to walk slowly away from the camera, his silhouette eventually disappearing into the mist.
+                </div>
+            </div>
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/037_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a young elf, [character1], with pointed ears, silver hair, and serene features, wearing flowing white robes. The environment is an enchanted, bioluminescent forest at night, with glowing mushrooms, sparkling flora, and ancient trees. This scene contains 5 shots. [per shot caption] Medium shot of [character1] walking slowly through the glowing forest, observing the magical plants. [shot cut] Close-up of [character1]'s hand gently touching a large, glowing mushroom, causing it to pulse with soft blue light. [shot cut] Medium close-up of [character1]'s face, looking up in wonder at the sparkling spores floating in the air. [shot cut] Wide shot showing the breathtaking beauty of the entire forest, with [character1] standing in its heart. [shot cut] Close-up of [character1]'s serene face, a faint smile on her lips as she closes her eyes, feeling the magic of the forest.
+                </div>
+            </div>
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/52_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] At the base of the World Tree, [character1] and [character2] place offerings. The tree's roots are so large they look like canyon walls, and runes glow on their surface. This scene contains 5 shots. [per shot caption] Extreme wide shot showing the impossible scale of the World Tree's base. [shot cut] Medium shot of the two characters walking towards a glowing rune on the root. [shot cut] [character1] places a hand-carved wooden bird at the base of the rune. [shot cut] [character2] pours a libation of glowing liquid onto the ground. [shot cut] The rune they are at glows brighter in response, and a deep, resonant hum echoes through the air, acknowledging their offering.
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/059_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] A tailor, [character1], an old man with meticulous hands and glasses perched on his nose, works in his shop. The shop is filled with bolts of fabric, mannequins, and sewing machines. This scene contains 5 shots. [per shot caption] Medium shot of [character1] at a cutting table, carefully drawing a chalk line on a piece of fine wool fabric. [shot cut] Close-up of his steady hand guiding the chalk along a ruler. [shot cut] Medium close-up of his face, focused in concentration, looking down at his work. [shot cut] Close-up of a needle and thread as he makes a slow, precise stitch by hand. [shot cut] Medium shot as he holds up the finished suit jacket on a hanger, inspecting it with a proud, critical eye.
+
+                </div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/062_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene is a 1920s speakeasy bar, dimly lit and elegant. The character is [character1], a woman with a stylish flapper haircut and a beaded dress, sitting alone at the bar. This scene contains 6 shots. [per shot caption] Medium shot of [character1] slowly stirring a cocktail in a fancy glass. [shot cut] Close-up of the glass, showing the ice cubes clinking and the cherry garnish. [shot cut] Medium close-up of her face, she has a pensive, slightly melancholic expression as she looks into her drink. [shot cut] She lifts her gaze and looks at her reflection in the mirror behind the bar. [shot cut] Close-up centered on her eyes in the reflection, they look sad. [shot cut] She takes a slow, deliberate sip from her cocktail.
+
+                </div>
+            </div>
+
+
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/041_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a child, [character1], a young girl with wide, curious eyes and a bright yellow raincoat. The environment is a forest path right after a rainstorm, with glistening leaves and earthy smells. This scene contains 5 shots. [per shot caption] Medium shot of [character1] walking down the wet path, holding a large green leaf like an umbrella. [shot cut] Close-up of her rain boots splashing gently in a small puddle. [shot cut] Medium close-up of her face, looking up at the sky with a happy, innocent expression as a ray of sunshine breaks through the clouds. [shot cut] Extreme close-up of a ladybug crawling on the leaf she is holding. [shot cut] Wide shot of the sun-dappled forest, with [character1] as a small, cheerful figure in yellow.
+                </div>
+            </div>
+
+
+            <div class="video-item">
+                <div class="video-container">
+                    <video controls loop muted preload="none" loading="lazy">
+                        <source src="cases/gallery/part2/045_seed0.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-caption">[global caption] The scene features a Viking warrior, [character1], with a thick beard, battle-worn face, and wearing fur-lined armor. The setting is the prow of a wooden longship, sailing through a misty, cold fjord surrounded by towering, snow-dusted mountains. This scene contains 4 shots. [per shot caption] Medium shot of [character1] standing stoically at the ship's prow, gazing into the mist ahead. [shot cut] Close-up of his weathered hand resting on the handle of his large axe. [shot cut] Medium close-up of his face, his expression grim and resolute, mist clinging to his beard. [shot cut] Wide shot of the longship emerging from the dense fog, revealing the majestic and imposing fjord ahead.
+
+            </div>
+
+
+
+
+        </div>
+    </section>
+
+
+    <!-- Footer Ornament -->
+    <div class="ornament" style="margin-bottom: 2rem;">✦ ✦ ✦</div>
+
+    <script>
+        // Auto-play videos when they come into viewport
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting) {
+                    video.play().catch(e => console.log('Autoplay prevented:', e));
+                } else {
+                    video.pause();
+                }
+            });
+        }, observerOptions);
+
+        // Observe all videos
+        document.querySelectorAll('video').forEach(video => {
+            observer.observe(video);
+        });
+
+        // Handle visibility change
+        document.addEventListener('visibilitychange', () => {
+            const videos = document.querySelectorAll('video');
+            if (document.hidden) {
+                videos.forEach(video => video.pause());
+            }
+        });
+
+        // Handle caption expand/collapse
+        function initCaptionToggles() {
+            const captions = document.querySelectorAll('.video-caption');
+
+            captions.forEach(caption => {
+                console.log(caption)
+                // Wrap existing content in caption-content div
+                const content = caption.innerHTML;
+                caption.innerHTML = `
+                    <div class="caption-content">${content}</div>
+                    <button class="caption-toggle" aria-label="Toggle caption">+</button>
+                `;
+
+                const contentDiv = caption.querySelector('.caption-content');
+                const toggleBtn = caption.querySelector('.caption-toggle');
+
+                if (contentDiv.innerHTML.length <= 50) {
+                    // If caption is short, remove toggle button
+                    toggleBtn.style.display = 'none';
+                    return;
+                }
+                toggleBtn.addEventListener('click', () => {
+                    contentDiv.classList.toggle('expanded');
+                    toggleBtn.textContent = contentDiv.classList.contains('expanded') ? '−' : '+';
+                });
+            });
+        }
+
+        // Initialize caption toggles after DOM is loaded
+        initCaptionToggles();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+Sample Index: 22
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a scientist, [character1], with safety goggles and a white lab coat, observing a specimen. The environment is a modern, clean laboratory with microscopes, beakers, and advanced equipment. This scene contains 5 shots. [per shot caption] Medium shot of [character1] leaning over a powerful microscope, adjusting the focus knob. [shot cut] Close-up of her eye looking into the eyepiece of the microscope. [shot cut] A stylized shot representing what she sees: a beautiful, abstract view of glowing cells dividing slowly. [shot cut] Medium close-up of her face as she pulls back from the microscope with a look of discovery and excitement. [shot cut] Close-up of her hand quickly grabbing a pen and starting to write notes in a lab journal.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 89, 141, 193]

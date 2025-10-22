@@ -1,0 +1,11 @@
+Sample Index: 28
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two main characters: [character1] is a serious-looking scientist with glasses and a white lab coat; [character2] is a small, curious child with a shock of bright orange hair, wearing pajamas. The environments include a futuristic, clean laboratory with intricate glowing equipment and a simple, cozy bedroom with starlight visible through a window. This scene contains 5 shots. [per shot caption] Medium close-up of [character1] meticulously adjusting a complex device, focused and slightly stressed. [shot cut] Close-up of [character2]'s wide-eyed wonder as they observe the laboratory through a small window. [shot cut] Medium shot of [character1] sighing and running a hand through their hair, taking a break. [shot cut] Close-up of [character2] giggling and pointing at a blinking light on the device. [shot cut] Medium close-up of [character1]'s serious face breaking into a rare, gentle smile as they look at [character2].
+
+Shot Cut Frames:
+--------------------------------------------------
+[205, 405, 605, 805]

@@ -1,0 +1,11 @@
+Sample Index: 6
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a lone character: [character1], a young woman with windswept auburn hair, wearing a heavy, warm coat. The environment is a dramatic, rocky cliffside overlooking a turbulent ocean at sunrise. The sky is filled with hues of orange, pink, and purple. This scene contains 5 shots. [per shot caption] Wide shot of the majestic sunrise over the ocean, with [character1] as a small silhouette standing on the edge of the cliff, emphasizing the grandeur of nature. [shot cut] Medium shot of [character1] from the side as she looks out at the horizon, the wind gently blowing her hair. [shot cut] Close-up of [character1]'s face, her eyes filled with awe and a hint of melancholy, the warm light of the sunrise illuminating her features. [shot cut] Close-up of her hand gripping a small, weathered stone. [shot cut] Medium shot of [character1] turning her head slightly and closing her eyes, taking a deep breath of the sea air.
+
+Shot Cut Frames:
+--------------------------------------------------
+[57, 101, 157, 213]

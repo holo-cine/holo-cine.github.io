@@ -1,0 +1,11 @@
+Sample Index: 4
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two characters in a tense, quiet conversation: [character1] is a stern-looking man in his 50s with sharp features and graying hair, wearing a tailored dark suit; [character2] is a young, defiant woman with sharp eyes and dark hair tied back, wearing a simple white blouse. The environment is a dimly lit, luxurious study with leather chairs and a large mahogany desk. Light comes from a single desk lamp, creating dramatic shadows. This scene contains 6 shots. [per shot caption] Medium shot of the two characters sitting opposite each other at the desk, a palpable tension between them. [shot cut] Close-up of [character1]'s face, his expression is hard and unyielding as he speaks softly. [shot cut] Close-up of [character2]'s face, she listens, her jaw tight with suppressed anger. [shot cut] Extreme close-up of [character1]'s hands, fingers steepled on the desk. [shot cut] Medium close-up of [character2] as she leans forward slightly, her eyes locking with his, her expression challenging. [shot cut] Over-the-shoulder shot from behind [character2], showing [character1]'s impassive face as he stares back at her.
+
+Shot Cut Frames:
+--------------------------------------------------
+[37, 73, 113, 169, 205]

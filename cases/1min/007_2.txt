@@ -1,0 +1,11 @@
+Sample Index: 7
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a tense interaction between two characters: [character1], a stoic detective in a trench coat, with a weary but sharp gaze, and [character2], a nervous informant with shifty eyes. The setting is a shadowy, rain-slicked alley at night, lit by a single flickering neon sign. This scene contains 12 shots. [per shot caption] Medium shot of the two men standing apart in the alley. [shot cut] Close-up on [character2]'s anxious face, rain dripping from his hair. [shot cut] Close-up of [character1]'s impassive face, watching [character2] intently. [shot cut] Medium shot as [character2] nervously glances around. [shot cut] Close-up of [character2]'s hand reaching into his pocket and pulling out a small USB drive. [shot cut] Extreme close-up of the USB drive being placed into [character1]'s open palm. [shot cut] Close-up of [character1]'s fingers closing around the drive. [shot cut] Medium close-up of [character1] giving a slight, confirming nod. [shot cut] Close-up of [character2]'s relieved, yet still fearful, expression. [shot cut] Medium shot as [character1] turns his back to leave. [shot cut] [character2] watches him go, then melts back into the shadows. [shot cut] Final shot of [character1] walking out of the alley and into the rainy city street.
+
+Shot Cut Frames:
+--------------------------------------------------
+[73, 145, 217, 293, 369, 445, 521, 601, 677, 757, 841]

@@ -1,0 +1,12 @@
+
+Sample Index: 35
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two lovers, [character1], a man with soft eyes, and [character2], a woman with a gentle smile, sitting in a cozy, vintage-style cafe. Rain is falling outside the window. This scene contains 6 shots. [per shot caption] Medium shot of the couple sitting at a small table, a cup of coffee between them, looking at each other. [shot cut] Close-up of [character1]'s face as he smiles warmly at [character2]. [shot cut] Close-up of [character2]'s face, she laughs softly, her eyes sparkling. [shot cut] Close-up of their hands as [character1] gently reaches across the table to hold [character2]'s hand. [shot cut] Medium shot from outside the cafe window, looking in at the couple, their warm intimacy contrasting with the cold rain outside. [shot cut] Close-up of their joined hands on the table.
+
+Shot Cut Frames:
+--------------------------------------------------
+[41, 81, 121, 161, 201]

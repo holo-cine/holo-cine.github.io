@@ -1,0 +1,11 @@
+Sample Index: 28
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a woman, [character1], with tear-streaked cheeks and sad eyes, sitting alone. The setting is a simple, sparsely decorated bedroom, with soft morning light filtering through the curtains. This scene contains 4 shots. [per shot caption] Medium shot of [character1] sitting on the edge of her bed, staring blankly at the floor. [shot cut] Close-up of a single tear slowly rolling down her cheek. [shot cut] Close-up of her hands twisting a crumpled letter in her lap. [shot cut] Medium close-up as she finally looks up towards the window, her expression shifting from deep sadness to a flicker of resilience.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

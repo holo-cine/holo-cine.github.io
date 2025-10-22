@@ -1,0 +1,11 @@
+Sample Index: 8
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features one character: [character1], a master watchmaker, an old man with focused eyes, magnified by a loupe, and steady, wrinkled hands. He is wearing a simple leather apron. The environment is a quiet, cluttered workshop filled with intricate tools, gears, and clocks. The scene is lit by a warm, focused lamp. This scene contains 6 shots. [per shot caption] Extreme close-up of the intricate, moving gears of a pocket watch. [shot cut] Medium shot of [character1] hunched over his workbench, concentrating intently. [shot cut] Extreme close-up of the tip of a tweezer, held by [character1]'s steady hand, placing a minuscule ruby gear into the watch mechanism. [shot cut] Close-up of [character1]'s eye, magnified by the loupe, showing intense focus. [shot cut] Medium close-up as he gently closes the watch's back casing with a soft click. [shot cut] Close-up of [character1]'s face as he removes the loupe and looks at the finished watch with a subtle smile of satisfaction.
+
+Shot Cut Frames:
+--------------------------------------------------
+[41, 81, 121, 161, 201]

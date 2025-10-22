@@ -1,0 +1,11 @@
+Sample Index: 3
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features one main character: [character1], a female artist with paint-splattered clothes and intense, focused eyes. She is in a spacious, light-filled art studio, standing before a large, nearly finished abstract canvas. This scene contains 10 shots. [per shot caption] Medium shot of [character1] studying her large canvas, a paintbrush in hand. [shot cut] Close-up of her palette, a vibrant mix of oil colors. [shot cut] Close-up of her hand confidently mixing a deep blue hue. [shot cut] Medium close-up of her face in deep concentration, brow furrowed. [shot cut] She takes a deep breath and approaches the canvas. [shot cut] Close-up of the paintbrush making a decisive, slow stroke on the canvas. [shot cut] Extreme close-up on the texture of the paint as it is applied. [shot cut] Medium shot as she steps back, her whole body language showing evaluation of her work. [shot cut] Close-up of her eyes, which soften as a slow smile of satisfaction appears. [shot cut] A final wide shot of the artist and her completed masterpiece in the quiet studio.
+
+Shot Cut Frames:
+--------------------------------------------------
+[93, 185, 281, 373, 461, 557, 649, 741, 837]

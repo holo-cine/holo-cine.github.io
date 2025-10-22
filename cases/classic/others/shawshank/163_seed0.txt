@@ -1,0 +1,11 @@
+Sample Index: 163
+Seed: 0
+Processed by: Rank 3
+
+Prompt:
+--------------------------------------------------
+[global caption] A recreation of the famous 'Shawshank Redemption' escape scene. The main character, [character1], a newly escaped prisoner, experiences a moment of pure catharsis in a thunderstorm. The environment is a muddy riverbank during a powerful storm at night. This scene contains 5 shots. [per shot caption] A close-up of [character1]'s face, rain plastering his hair down as he looks around in exhausted disbelief and relief. [shot cut] A medium shot showing [character1] stumbling forward onto the muddy bank, beginning to tear off his torn and dirty prison shirt. [shot cut] A powerful low-angle close-up of his face as he tilts his head back and looks up towards the sky, closing his eyes against the cleansing, pouring rain. [shot cut] A medium wide shot as [character1] throws his arms wide open, arching his back in a pose of absolute freedom and spiritual release. [shot cut] A dramatic wide shot of [character1] in his triumphant pose on the riverbank as a brilliant bolt of lightning flashes across the sky, illuminating his silhouetted form.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 97, 145, 193]

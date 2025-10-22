@@ -1,0 +1,11 @@
+Sample Index: 0
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features one main character: [character1], a contemplative android with luminous blue eyes and chrome accents on his face, wearing a sleek, dark high-collar jacket. The environment is his minimalist, high-tech apartment with a large window overlooking a rainy, neon-lit cyberpunk cityscape. This scene contains 5 shots. [per shot caption] Medium close-up of [character1] looking out the window, raindrops streaking down the glass, reflecting the city's neon signs on his face. [shot cut] Extreme close-up on [character1]'s blue, glowing eye, a tiny reflection of the city visible within. [shot cut] Medium shot of [character1] slowly turning his head away from the window towards the camera, his expression unreadable. [shot cut] Close-up of [character1]'s hand, fingers gently tapping on a cold, metallic tabletop. [shot cut] Medium shot from behind [character1] as he stands motionless, gazing out at the vast, vibrant and rainy city below.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 89, 141, 193]

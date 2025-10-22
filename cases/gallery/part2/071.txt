@@ -1,0 +1,11 @@
+Sample Index: 71
+Seed: 0
+Processed by: Rank 7
+
+Prompt:
+--------------------------------------------------
+[global caption] A firefly catcher, [character1], a young boy with a sense of wonder, is in a meadow at twilight. The air is filled with the soft glow of fireflies. This scene contains 4 shots. [per shot caption] Wide shot of the magical meadow, with countless fireflies blinking on and off. [shot cut] Medium shot of [character1] holding a glass jar, carefully catching a firefly with his hands. [shot cut] Close-up of the jar, now containing several glowing fireflies, illuminating the boy's happy face from below. [shot cut] Medium shot as he opens the jar and lets the fireflies go, watching them fly away with a smile.
+
+Shot Cut Frames:
+--------------------------------------------------
+[61, 121, 181]

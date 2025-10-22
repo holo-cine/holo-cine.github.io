@@ -1,0 +1,11 @@
+Sample Index: 6
+Seed: 0
+Processed by: Rank 6
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features a young man, [character1], a musician with long, dark hair and a thoughtful expression, wearing a casual sweater. He is in a cozy, dimly lit room with a grand piano. Moonlight streams through a large window, illuminating the piano keys. This scene contains 6 shots. [per shot caption] Medium shot of [character1] sitting at the piano, his hands resting on the keys. [shot cut] Close-up of his face, eyes closed as if recalling a melody. [shot cut] Medium close-up of his hands as they begin to move, slowly and gracefully playing a simple, melancholic tune. [shot cut] Medium shot showing his entire upper body, swaying gently with the music he's playing. [shot cut] Close-up of his focused, emotional expression as the music builds slightly. [shot cut] Wide shot of the room, with the musician at the piano bathed in moonlight, creating a serene and beautiful atmosphere.
+
+Shot Cut Frames:
+--------------------------------------------------
+[161, 321, 481, 641, 801]

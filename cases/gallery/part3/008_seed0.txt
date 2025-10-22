@@ -1,0 +1,11 @@
+Sample Index: 8
+Seed: 0
+Processed by: Rank 0
+
+Prompt:
+--------------------------------------------------
+[global caption] [character1] is a deceased young man with light brown hair, dressed in a dirty, blood-stained military uniform. [character2] is a surviving soldier, whose dirty, blood-stained hands, wearing a silver ring, are visible. The environment is a desolate, war-torn battlefield under an overcast sky, with dark, rocky ground, debris, dead trees, and distant explosions. This scene contains 5 shots. [per shot caption] Close-up shot of [character1]'s completely still and lifeless face lying on the ground, his expression frozen, as [character2]'s hands gently close [character1]'s open eyes. [shot cut] Wide shot of the devastated battlefield showing [character2] as a lone figure in the middle ground, with large explosions and thick black smoke filling the background. [shot cut] Medium close-up of [character2]'s bloodied and dirt-streaked face, showing an expression of profound sadness and distress. [shot cut] Medium shot from behind [character2]'s shoulder, as he looks out at distant fires and smoke on the battlefield. [shot cut] Medium close-up of [character2]'s face, still covered in dirt and blood, looking around with a pained and despairing expression.
+
+Shot Cut Frames:
+--------------------------------------------------
+[49, 89, 145, 209]
