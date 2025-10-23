@@ -1,0 +1,11 @@
+Sample Index: 28
+Seed: 0
+Processed by: Rank 4
+
+Prompt:
+--------------------------------------------------
+[global caption] The scene features two characters after a conflict: [character1], a young man with a regretful expression, and [character2], a young woman with tear-streaked cheeks who is trying to be strong. They are in a sparsely decorated, modern apartment during a rainy day. This scene contains 11 shots. [per shot caption] Medium shot of [character1] and [character2] on opposite ends of a sofa, in silence. [shot cut] Close-up of [character2]'s face as she stares out the rain-covered window. [shot cut] Close-up of [character1]'s hands, fidgeting nervously in his lap. [shot cut] Medium close-up of [character1] looking at [character2], his face full of remorse. [shot cut] He speaks her name softly. She doesn't turn. [shot cut] Medium shot as he slowly gets up and walks over to her. [shot cut] He kneels in front of her. A low-angle two-shot. [shot cut] Close-up of him tentatively reaching out and placing his hand on her knee. [shot cut] Close-up of her face as she finally turns to look at him, her expression vulnerable. [shot cut] A tight, emotional two-shot as their eyes meet, the apology unspoken but understood. [shot cut] A final medium shot as she places her hand over his, a first step toward reconciliation.
+
+Shot Cut Frames:
+--------------------------------------------------
+[85, 173, 257, 341, 429, 513, 601, 685, 769, 857]
