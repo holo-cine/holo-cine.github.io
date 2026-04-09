@@ -113,7 +113,38 @@
             color: #F0F0F0;
             text-align: left;
         }
+/* Venue Badge (CVPR Highlight) - 极简静态版 */
+        .venue-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 0.5rem auto 1.5rem auto;
+            padding: 0.4rem 1.8rem;
+            background: rgba(229, 122, 60, 0.1); /* 极淡的橙色背景 */
+            border: 2px solid #E57A3C; /* 强调色边框 */
+            border-radius: 4px; 
+            color: #E57A3C; /* 文字颜色与高亮色一致，更加醒目 */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
 
+        .venue-badge .icon {
+            font-size: 1.2rem;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .venue-badge {
+                font-size: 1.1rem;
+                padding: 0.3rem 1.2rem;
+            }
+        }
         .nav-links {
             display: flex;
             flex-wrap: wrap;
@@ -561,6 +592,24 @@
         }
 
         /* Authors Section */
+        /* 极简荣誉文本 */
+/* Venue Text (类似 CoDeF 的极简风格) */
+        .venue-text {
+            font-family: 'Lato', sans-serif;
+            font-size: 1.8rem; /* 字号略大，和截图比例一致 */
+            color: #F0F0F0; /* 干净的浅灰色，融入整体暗色主题 */
+            font-weight: 400; /* 不加粗，保持清爽 */
+            margin: 1rem 0 1.5rem 0; /* 控制与上下元素的间距 */
+            text-align: center;
+        }
+
+        /* 移动端适配字号缩小 */
+        @media (max-width: 768px) {
+            .venue-text {
+                font-size: 1.3rem;
+                margin: 0.8rem 0 1.2rem 0;
+            }
+        }
         .authors-section {
             margin-top: 1rem;
             text-align: center;
@@ -696,6 +745,11 @@
                     <a href="https://scholar.google.com/citations?user=0uO4fzkAAAAJ&hl=zh-CN">Hanlin
                         Wang</a><sup>1,2</sup>
                 </span>
+
+                                <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=dNhzCu4AAAAJ&hl=zh-CNhttps://scholar.google.com/citations?user=dNhzCu4AAAAJ&hl=zh-CN">Shuailei Ma
+            </a><sup>2</sup>
+                </span>
                 <span class="author-block">
                     <a href="https://yixuanli98.github.io/">Yixuan Li</a><sup>2,4</sup>
                 </span>
@@ -720,6 +774,8 @@
             </div>
         </div>
 
+<div class="venue-text">CVPR 2026 Highlight</div>
+            </div>
         <div class="nav-links">
             <a class="nav-button" href="https://arxiv.org/abs/2510.20822" target="_blank" rel="noopener noreferrer">
                 <span>📄</span>
